@@ -1,7 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'dart:js' as js;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "config/.env");
+  final String apiKey = dotenv.env['ApiKey']!;
+  final String apiId = dotenv.env['ApiId']!;
+  final String messagingSenderId = dotenv.env['MessagingSenderId']!;
+  final String projectId = dotenv.env['ProjectId']!;
+
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: apiKey,
+          appId: apiId,
+          messagingSenderId: messagingSenderId,
+          projectId: projectId));
   runApp(const MyApp());
 }
 
