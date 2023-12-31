@@ -2,9 +2,11 @@ import 'package:creationlab_app_front/pages/tool_borrow/tool_borrow.dart';
 import 'package:flutter/material.dart';
 import 'itemlist/itemlist.dart';
 import 'notification.dart';
+import 'package:creationlab_app_front/firebase_functions/createdata.dart';
 import 'app_manage/appManage.dart';
 import 'package:get/get.dart';
 import 'app_manage/administer_varify.dart';
+import 'package:creationlab_app_front/firebase_functions/itemcall.dart';
 
 class Homepage extends StatelessWidget {
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
@@ -86,8 +88,10 @@ class Homepage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () {
-                          Get.to(() => const notification());
+                        onTap: () async {
+                          await itemcallFireStore();
+                          // createData();
+                          // Get.to(() => const notification());
                         },
                       ),
                     ),

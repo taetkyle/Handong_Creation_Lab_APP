@@ -1,28 +1,49 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Items {
+class Itemss {
   final String engname;
   final String korname;
-  // final int age;
+  final int number;
+  final String detail_info;
+  final String resources;
+  final String kortype;
+  final String engtype;
 
-  Items({
+  Itemss({
     required this.engname,
     required this.korname,
-    // required this.age,
+    required this.number,
+    required this.detail_info,
+    required this.resources,
+    required this.kortype,
+    required this.engtype,
   });
 
-  factory Items.fromJson(Map<String, dynamic> json) {
-    return Items(
-      engname: json["engname"],
-      korname: json["korname"],
-      // age: json["name"],
+  factory Itemss.fromFirestore(DocumentSnapshot doc) {
+    Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+
+    return Itemss(
+      detail_info: data["detail_info"],
+      engname: data["engname"],
+      engtype: data["engtype"],
+      korname: data["korname"],
+      kortype: data["kortype"],
+      number: data["number"],
+      resources: data["resources"],
     );
   }
+
   Map<String, dynamic> toJson() {
     return {
+      "detail_info": detail_info,
       "engname": engname,
+      "engtype": engtype,
       "korname": korname,
-      // "name": age,
+      "kortype": kortype,
+      "number": number,
+      "resources": resources,
     };
   }
 }
