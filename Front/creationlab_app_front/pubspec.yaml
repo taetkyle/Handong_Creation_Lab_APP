@@ -38,6 +38,10 @@ dependencies:
   firebase_core: ^2.24.0
   firebase: ^9.0.3
   flutter_dotenv: ^5.1.0
+  cloud_firestore: ^4.13.6
+  firebase_database: ^10.3.8
+  get: ^4.6.6
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -55,8 +59,19 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-  # assets:
-  #   - assets/config/.env
+  fonts:
+  - family: BoarderFont
+    fonts:
+    - asset: assets/fonts/borderfont.ttf
+  - family: KoreanFont
+    fonts:
+    - asset: assets/fonts/Korean.ttf
+  - family: Kanit
+    fonts:
+    - asset: assets/fonts/Kanit-Regular.ttf
+  assets:
+    - assets/image/handong_logo.png
+    - assets/image/handong_logo_small.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
