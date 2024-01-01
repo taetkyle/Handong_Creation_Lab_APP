@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:creationlab_app_front/firebase_functions/items.dart';
+import 'package:creationlab_app_front/firebase_functions/item_related/items.dart';
 import 'package:creationlab_app_front/widget/card.dart';
 import 'package:get/get.dart';
 import 'powertoollist.dart';
 import 'type_sep.dart';
-import 'package:creationlab_app_front/firebase_functions/itemcall.dart';
+import 'package:creationlab_app_front/firebase_functions/item_related/itemcall.dart';
 
 class itemList extends StatefulWidget {
   const itemList({super.key});

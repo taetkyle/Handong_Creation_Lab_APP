@@ -1,12 +1,13 @@
+import 'package:creationlab_app_front/firebase_functions/admin_related/admin_id_pw_call.dart';
 import 'package:creationlab_app_front/pages/tool_borrow/tool_borrow.dart';
 import 'package:flutter/material.dart';
 import 'itemlist/itemlist.dart';
 import 'notification.dart';
-import 'package:creationlab_app_front/firebase_functions/createdata.dart';
+import 'package:creationlab_app_front/firebase_functions/item_related/createdata.dart';
 import 'app_manage/appManage.dart';
 import 'package:get/get.dart';
 import 'app_manage/administer_varify.dart';
-import 'package:creationlab_app_front/firebase_functions/itemcall.dart';
+import 'package:creationlab_app_front/firebase_functions/item_related/itemcall.dart';
 
 class Homepage extends StatelessWidget {
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
@@ -89,7 +90,7 @@ class Homepage extends StatelessWidget {
                           ),
                         ),
                         onTap: () async {
-                          await itemcallFireStore();
+                          await AdmincallFireStore();
                           // createData();
                           // Get.to(() => const notification());
                         },

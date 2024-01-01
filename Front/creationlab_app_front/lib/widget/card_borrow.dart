@@ -12,7 +12,7 @@ Widget cardborrow(
   return InkWell(
     onTap: () {},
     child: Container(
-      height: 90,
+      height: 70,
       decoration: BoxDecoration(
           color: const Color.fromARGB(255, 229, 228, 228),
           border: Border.all(

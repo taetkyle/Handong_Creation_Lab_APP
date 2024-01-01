@@ -1,7 +1,11 @@
+import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list_call.dart';
+import 'package:creationlab_app_front/firebase_functions/item_related/itemcall.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'masterpage.dart';
+import 'package:creationlab_app_front/firebase_functions/admin_related/admin.dart';
+import 'package:creationlab_app_front/firebase_functions/admin_related/admin_id_pw_call.dart';
 
 class administer_varify extends StatefulWidget {
   const administer_varify({super.key});
@@ -15,6 +19,15 @@ class _administer_varifyState extends State<administer_varify> {
   TextEditingController passwordEditingController = TextEditingController();
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
   Color textColor = const Color.fromARGB(255, 2, 21, 104);
+  Admin? admin;
+
+  @override
+  firstSetting() async {
+    admin = await AdmincallFireStore();
+    if (admin?.id != "") {
+      return true;
+    }
+  }
 
   @override
   void initState() {
@@ -33,6 +46,7 @@ class _administer_varifyState extends State<administer_varify> {
         ),
       );
     });
+    firstSetting();
     super.initState();
   }
 
@@ -135,7 +149,24 @@ class _administer_varifyState extends State<administer_varify> {
                     ),
                   ),
                   onTap: () {
-                    Get.to(() => masterpage());
+                    if (usernameEditingController.text == admin?.id &&
+                        passwordEditingController.text == admin?.pw) {
+                      Get.to(() => masterpage());
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: const Text('오류'),
+                          content: const Text('아이디나 비밀번호가 일치하지 않습니다'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: const Text('확인'),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   },
                 ),
               ),
