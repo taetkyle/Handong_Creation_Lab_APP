@@ -11,6 +11,7 @@ Future<List<Itemss>> itemcallFireStore() async {
 
     querySnapshot.docs.forEach((DocumentSnapshot doc) {
       Itemss item = Itemss.fromFirestore(doc);
+
       itemsList.add(item);
     });
   } catch (e) {

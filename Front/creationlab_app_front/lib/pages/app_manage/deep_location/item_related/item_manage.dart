@@ -1,19 +1,22 @@
+import 'package:creationlab_app_front/pages/app_manage/deep_location/item_related/item_adding.dart';
+import 'package:creationlab_app_front/pages/itemlist/powertoollist.dart';
+import 'package:creationlab_app_front/pages/itemlist/type_sep.dart';
+import 'package:creationlab_app_front/widget/master_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:creationlab_app_front/firebase_functions/item_related/items.dart';
 import 'package:creationlab_app_front/widget/card.dart';
 import 'package:get/get.dart';
-import 'powertoollist.dart';
-import 'type_sep.dart';
 import 'package:creationlab_app_front/firebase_functions/item_related/itemcall.dart';
 
-class itemList extends StatefulWidget {
-  const itemList({super.key});
+class itemManage extends StatefulWidget {
+  const itemManage({super.key});
 
   @override
-  State<itemList> createState() => _itemListState();
+  State<itemManage> createState() => _itemManageState();
 }
 
-class _itemListState extends State<itemList> {
+class _itemManageState extends State<itemManage> {
   List<Itemss> itemsList = [];
 
   @override
@@ -36,7 +39,7 @@ class _itemListState extends State<itemList> {
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 21, 104),
           title: const Text(
-            "물품 리스트",
+            "물품 관리",
             style: TextStyle(
               color: Colors.white,
               fontFamily: "KoreanFont",
@@ -52,11 +55,13 @@ class _itemListState extends State<itemList> {
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
-                      carditem(
-                          itemsList[index].number.toString(),
+                      masterCarditem(
+                          itemsList[index].docId,
                           itemsList[index].korname,
-                          itemsList[index].kortype,
-                          itemsList[index].detail_info),
+                          itemsList[index].number.toString(),
+                          itemsList[index].detail_info,
+                          itemsList[index].resources,
+                          itemsList[index].kortype),
                       const SizedBox(
                         height: 10,
                       ),
@@ -68,24 +73,6 @@ class _itemListState extends State<itemList> {
           }
         },
       ),
-
-      // Column(
-      //   children: [
-      //     carditem("1", "Hello", "전기", "1234"),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     carditem("2", "Hello", "전기", "1234"),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     carditem("3", "Hello", "전기", "1234"),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     carditem("4", "Hello", "전기", "1234")
-      //   ],
-      // ),
       bottomNavigationBar: Container(
           height: 60,
           color: Colors.black12,
@@ -95,17 +82,17 @@ class _itemListState extends State<itemList> {
                 flex: 1,
                 child: InkWell(
                   onTap: () {
-                    Get.to(powertoollist());
+                    Get.back();
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Column(
                       children: <Widget>[
                         Icon(
-                          Icons.power_outlined,
+                          Icons.cancel,
                         ),
                         Text(
-                          'Power Tool',
+                          '취소',
                           style: TextStyle(
                             // color: Color.fromARGB(255, 90, 90, 90),
                             fontFamily: "KoreanFont",
@@ -121,17 +108,17 @@ class _itemListState extends State<itemList> {
                 flex: 1,
                 child: InkWell(
                   onTap: () {
-                    Get.to(typesep());
+                    Get.to(itemAdding());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Column(
                       children: <Widget>[
                         Icon(
-                          Icons.search,
+                          Icons.add,
                         ),
                         Text(
-                          '분류 보기',
+                          '추가',
                           style: TextStyle(
                             // color: Color.fromARGB(255, 90, 90, 90),
                             fontFamily: "KoreanFont",

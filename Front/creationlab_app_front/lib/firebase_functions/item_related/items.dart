@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Itemss {
+  final String docId;
   final String engname;
   final String korname;
   final int number;
@@ -10,6 +11,7 @@ class Itemss {
   final String engtype;
 
   Itemss({
+    required this.docId,
     required this.engname,
     required this.korname,
     required this.number,
@@ -23,6 +25,7 @@ class Itemss {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
 
     return Itemss(
+      docId: doc.id,
       detail_info: data["detail_info"],
       engname: data["engname"],
       engtype: data["engtype"],

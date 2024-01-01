@@ -1,19 +1,18 @@
-import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list_call.dart';
 import 'package:flutter/material.dart';
-import 'package:creationlab_app_front/widget/card_borrow.dart';
-import 'borrowingpage.dart';
+import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list_call.dart';
+import 'package:creationlab_app_front/widget/master_card_borrow.dart';
+
 import 'package:get/get.dart';
 import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list.dart';
-import 'package:creationlab_app_front/firebase_functions/borrow_related/create_borrow_list.dart';
 
-class tool_borrow extends StatefulWidget {
-  const tool_borrow({super.key});
+class borrowManage extends StatefulWidget {
+  const borrowManage({super.key});
 
   @override
-  State<tool_borrow> createState() => _tool_borrowState();
+  State<borrowManage> createState() => _borrowManageState();
 }
 
-class _tool_borrowState extends State<tool_borrow> {
+class _borrowManageState extends State<borrowManage> {
   List<Borrowlist> borrowList = [];
 
   @override
@@ -36,7 +35,7 @@ class _tool_borrowState extends State<tool_borrow> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 2, 21, 104),
         title: const Text(
-          "장비 대출",
+          "대출 관리",
           style: TextStyle(
             color: Colors.white,
             fontFamily: "KoreanFont",
@@ -53,7 +52,8 @@ class _tool_borrowState extends State<tool_borrow> {
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
-                      cardborrow(
+                      masterCardborrow(
+                        borrowList[index].docId,
                         borrowList[index].username,
                         borrowList[index].toolname,
                         borrowList[index].date,
@@ -68,35 +68,6 @@ class _tool_borrowState extends State<tool_borrow> {
             return const CircularProgressIndicator();
           }
         },
-      ),
-
-
-      bottomNavigationBar: Container(
-        height: 60,
-        color: Colors.black12,
-        child: InkWell(
-          onTap: () {
-            Get.to(borrowingpage());
-          },
-          child: const Padding(
-            padding: EdgeInsets.only(top: 8.0),
-            child: Column(
-              children: <Widget>[
-                Icon(
-                  Icons.arrow_circle_right_outlined,
-                ),
-                Text(
-                  '대출하기',
-                  style: TextStyle(
-                    // color: Color.fromARGB(255, 90, 90, 90),
-                    fontFamily: "KoreanFont",
-                    fontSize: 20,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }

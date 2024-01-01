@@ -11,11 +11,13 @@ Future<List<Borrowlist>> borrowlistcallFireStore() async {
 
     querySnapshot.docs.forEach((DocumentSnapshot doc) {
       Borrowlist item = Borrowlist.fromFirestore(doc);
+
       BorrowList.add(item);
     });
   } catch (e) {
     print("Error fetching data: $e");
   }
-  for (Borrowlist a in BorrowList) {}
+  // print(object)
+
   return BorrowList;
 }

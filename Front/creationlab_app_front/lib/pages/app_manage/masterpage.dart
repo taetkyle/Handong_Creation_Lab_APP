@@ -1,15 +1,136 @@
+import 'package:creationlab_app_front/pages/homepage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'deep_location/borrow_related/borrow_manage.dart';
+import 'deep_location/item_related/item_manage.dart';
 
-class masterpage extends StatefulWidget {
+class masterpage extends StatelessWidget {
   const masterpage({super.key});
 
   @override
-  State<masterpage> createState() => _masterpageState();
-}
-
-class _masterpageState extends State<masterpage> {
-  @override
   Widget build(BuildContext context) {
-    return Container();
+    Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
+    Color textColor = const Color.fromARGB(255, 2, 21, 104);
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              opacity: 0.3,
+              fit: BoxFit.cover,
+              image: AssetImage(
+                'assets/image/handong_logo.png',
+              ))),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Column(
+          children: [
+            const Expanded(
+                flex: 10,
+                child: Center(
+                  child: Text(
+                    "CreationLab   App",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 90, 90, 90),
+                      fontFamily: "KoreanFont",
+                      fontSize: 70,
+                    ),
+                  ),
+                )),
+            const Expanded(
+              flex: 2,
+              child: SizedBox(),
+            ),
+            const Expanded(flex: 3, child: SizedBox()),
+            Expanded(
+                flex: 3,
+                child: Row(
+                  children: [
+                    const Expanded(flex: 1, child: SizedBox()),
+                    Expanded(
+                      flex: 10,
+                      child: InkWell(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: buttonColor),
+                          child: const Center(
+                            child: Text(
+                              "물품 관리",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "KoreanFont",
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          Get.to(itemManage());
+                        },
+                      ),
+                    ),
+                    const Expanded(flex: 8, child: SizedBox()),
+                    Expanded(
+                      flex: 10,
+                      child: InkWell(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: buttonColor),
+                          child: const Center(
+                            child: Text(
+                              "대출 관리",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "KoreanFont",
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        onTap: () async {
+                          Get.to(borrowManage());
+                        },
+                      ),
+                    ),
+                    const Expanded(flex: 1, child: SizedBox()),
+                  ],
+                )),
+            const Expanded(
+              flex: 3,
+              child: SizedBox(),
+            ),
+          ],
+        ),
+        bottomNavigationBar: Container(
+          height: 60,
+          color: Colors.black12,
+          child: InkWell(
+            onTap: () {
+              Get.offAll(Homepage());
+            },
+            child: const Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Column(
+                children: <Widget>[
+                  Icon(
+                    Icons.cancel,
+                  ),
+                  Text(
+                    '나가기',
+                    style: TextStyle(
+                      // color: Color.fromARGB(255, 90, 90, 90),
+                      fontFamily: "KoreanFont",
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
