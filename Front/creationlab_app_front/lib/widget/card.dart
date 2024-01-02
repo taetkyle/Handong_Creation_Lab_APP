@@ -1,18 +1,17 @@
+import 'package:creationlab_app_front/pages/itemlist/sub_itemlist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:creationlab_app_front/functions/sep_kor_type_color.dart';
 
-Widget carditem(
-  String number,
-  String name,
-  String type,
-  String specific,
-) {
+Widget carditem(String number, String name, String type, String specific,
+    String resources) {
   int contextSpace = 1;
   int contextFont = 3;
 
   return InkWell(
-    onTap: () {},
+    onTap: () {
+      Get.to(subItemList(name, number, specific, resources, type));
+    },
     child: Container(
       height: 70,
       decoration: BoxDecoration(

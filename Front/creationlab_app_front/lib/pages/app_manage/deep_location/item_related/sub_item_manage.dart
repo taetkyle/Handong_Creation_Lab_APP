@@ -4,6 +4,8 @@ import 'package:creationlab_app_front/widget/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:creationlab_app_front/functions/sep_kor_type_color.dart';
+import 'package:creationlab_app_front/widget/card_withoutfunctions.dart';
 
 class subItemManage extends StatelessWidget {
   final String docId;
@@ -27,7 +29,11 @@ class subItemManage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: carditem(number, korname, kortype, detail_info),
+      body: cardWithoutFunctions(
+        number,
+        korname,
+        kortype,
+      ),
       bottomNavigationBar: Container(
           height: 60,
           color: Colors.black12,

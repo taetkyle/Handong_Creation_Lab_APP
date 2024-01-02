@@ -56,7 +56,8 @@ class _itemListState extends State<itemList> {
                           itemsList[index].number.toString(),
                           itemsList[index].korname,
                           itemsList[index].kortype,
-                          itemsList[index].detail_info),
+                          itemsList[index].detail_info,
+                          itemsList[index].resources),
                       const SizedBox(
                         height: 10,
                       ),
