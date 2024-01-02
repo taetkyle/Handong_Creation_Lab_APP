@@ -74,16 +74,6 @@ class _itemAddingState extends State<itemAdding> {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: TextField(
-                controller: usernameEditingController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: '본인 이름',
-                    hintText: '본인 이름을 작성해주세요'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-              child: TextField(
                 controller: numberEditingController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),

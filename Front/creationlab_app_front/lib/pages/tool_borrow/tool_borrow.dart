@@ -36,7 +36,7 @@ class _tool_borrowState extends State<tool_borrow> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 2, 21, 104),
         title: const Text(
-          "장비 대출",
+          "대출 리스트",
           style: TextStyle(
             color: Colors.white,
             fontFamily: "KoreanFont",
@@ -69,8 +69,6 @@ class _tool_borrowState extends State<tool_borrow> {
           }
         },
       ),
-
-
       bottomNavigationBar: Container(
         height: 60,
         color: Colors.black12,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:creationlab_app_front/functions/sep_kor_type_color.dart';
 
 Widget carditem(
   String number,
@@ -58,8 +59,8 @@ Widget carditem(
             flex: 3,
             child: Text(
               type,
-              style: const TextStyle(
-                color: Colors.black,
+              style: TextStyle(
+                color: sepKorTypeColor(type),
                 fontFamily: "KoreanFont",
                 fontSize: 20,
               ),

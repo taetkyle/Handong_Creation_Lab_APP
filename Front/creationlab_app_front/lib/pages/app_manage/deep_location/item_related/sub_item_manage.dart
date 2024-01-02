@@ -59,32 +59,32 @@ class subItemManage extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          Icons.edit,
-                        ),
-                        Text(
-                          '수정',
-                          style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
-                            fontFamily: "KoreanFont",
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              // Expanded(
+              //   flex: 1,
+              //   child: InkWell(
+              //     onTap: () {
+              //       Get.back();
+              //     },
+              //     child: const Padding(
+              //       padding: EdgeInsets.only(top: 8.0),
+              //       child: Column(
+              //         children: <Widget>[
+              //           Icon(
+              //             Icons.edit,
+              //           ),
+              //           Text(
+              //             '수정',
+              //             style: TextStyle(
+              //               // color: Color.fromARGB(255, 90, 90, 90),
+              //               fontFamily: "KoreanFont",
+              //               fontSize: 20,
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Expanded(
                 flex: 1,
                 child: InkWell(
