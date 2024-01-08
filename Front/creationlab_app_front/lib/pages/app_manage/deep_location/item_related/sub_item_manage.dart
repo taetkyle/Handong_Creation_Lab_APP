@@ -36,7 +36,7 @@ class subItemManage extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
           height: 60,
-          color: Colors.black12,
+          color: const Color.fromARGB(255, 2, 21, 104),
           child: Row(
             children: [
               Expanded(
@@ -50,12 +50,13 @@ class subItemManage extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.cancel,
                         ),
                         Text(
                           '취소',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),
@@ -65,50 +66,25 @@ class subItemManage extends StatelessWidget {
                   ),
                 ),
               ),
-              // Expanded(
-              //   flex: 1,
-              //   child: InkWell(
-              //     onTap: () {
-              //       Get.back();
-              //     },
-              //     child: const Padding(
-              //       padding: EdgeInsets.only(top: 8.0),
-              //       child: Column(
-              //         children: <Widget>[
-              //           Icon(
-              //             Icons.edit,
-              //           ),
-              //           Text(
-              //             '수정',
-              //             style: TextStyle(
-              //               // color: Color.fromARGB(255, 90, 90, 90),
-              //               fontFamily: "KoreanFont",
-              //               fontSize: 20,
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
               Expanded(
                 flex: 1,
                 child: InkWell(
                   onTap: () {
                     deleteItemDoc(docId);
-                    Get.to(masterpage());
+                    Get.to(const masterpage());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.delete,
                         ),
                         Text(
                           '삭제',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),

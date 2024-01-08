@@ -1,11 +1,9 @@
 import 'package:creationlab_app_front/pages/app_manage/deep_location/item_related/item_adding.dart';
-import 'package:creationlab_app_front/pages/itemlist/powertoollist.dart';
-import 'package:creationlab_app_front/pages/itemlist/type_sep.dart';
+// import 'package:creationlab_app_front/pages/itemlist/powertoollist.dart';
+// import 'package:creationlab_app_front/pages/itemlist/type_sep.dart';
 import 'package:creationlab_app_front/widget/master_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:creationlab_app_front/firebase_functions/item_related/items.dart';
-import 'package:creationlab_app_front/widget/card.dart';
 import 'package:get/get.dart';
 import 'package:creationlab_app_front/firebase_functions/item_related/itemcall.dart';
 
@@ -75,7 +73,7 @@ class _itemManageState extends State<itemManage> {
       ),
       bottomNavigationBar: Container(
           height: 60,
-          color: Colors.black12,
+          color: const Color.fromARGB(255, 2, 21, 104),
           child: Row(
             children: [
               Expanded(
@@ -89,12 +87,13 @@ class _itemManageState extends State<itemManage> {
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.cancel,
                         ),
                         Text(
                           '취소',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),
@@ -108,19 +107,20 @@ class _itemManageState extends State<itemManage> {
                 flex: 1,
                 child: InkWell(
                   onTap: () {
-                    Get.to(itemAdding());
+                    Get.to(const itemAdding());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.add,
                         ),
                         Text(
                           '추가',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),

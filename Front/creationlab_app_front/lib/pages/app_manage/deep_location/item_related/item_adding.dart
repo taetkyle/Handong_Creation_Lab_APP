@@ -84,6 +84,8 @@ class _itemAddingState extends State<itemAdding> {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
                 controller: detail_infoEditingController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),

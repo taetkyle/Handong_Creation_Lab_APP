@@ -1,16 +1,21 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/homepage.dart';
 import 'package:get/get.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: "config/.env");
-  final String apiKey = dotenv.env['ApiKey']!;
-  final String apiId = dotenv.env['ApiId']!;
-  final String messagingSenderId = dotenv.env['MessagingSenderId']!;
-  final String projectId = dotenv.env['ProjectId']!;
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await dotenv.load(fileName: "config/.env");
+  // final String apiKey = dotenv.env['ApiKey']!;
+  // final String apiId = dotenv.env['ApiId']!;
+  // final String messagingSenderId = dotenv.env['MessagingSenderId']!;
+  // final String projectId = dotenv.env['ProjectId']!;
+
+  final String apiKey = "AIzaSyBI_VxUDaDpw39Y4_ZG07SZo6ZsQWnMWM0";
+  final String apiId = "1:1049693809515:web:7562ee321be73c36957a2e";
+  final String messagingSenderId = "1049693809515";
+  final String projectId = "handongcreationlab";
 
   await Firebase.initializeApp(
       options: FirebaseOptions(
@@ -28,6 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       // home: Homepage(),
       home: Homepage(),
       getPages: [
@@ -35,6 +41,7 @@ class MyApp extends StatelessWidget {
           name: '/',
           page: () => Homepage(),
         ),
+        // Gepublic
       ],
     );
   }
@@ -115,8 +122,8 @@ class MyApp extends StatelessWidget {
 //       floatingActionButton: FloatingActionButton(
 //         onPressed: () {
 //           createData();
-//           // js.context
-//           //     .callMethod('open', ['https://stackoverflow.com/questions/ask']);
+//           js.context
+//               .callMethod('open', ['https://stackoverflow.com/questions/ask']);
 //         },
 //         tooltip: 'Increment',
 //         child: const Icon(Icons.add),

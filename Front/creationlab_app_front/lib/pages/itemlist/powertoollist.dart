@@ -16,6 +16,66 @@ class powertoollist extends StatelessWidget {
               fontSize: 30,
             ),
           )),
+      body: GridView.count(
+        scrollDirection: Axis.horizontal,
+        crossAxisCount: 2,
+        children: [
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+          Container(
+              margin: const EdgeInsets.all(5),
+              width: 200,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(5))),
+        ],
+      ),
     );
   }
 }

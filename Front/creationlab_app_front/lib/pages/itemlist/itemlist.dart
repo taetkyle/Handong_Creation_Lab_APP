@@ -69,46 +69,29 @@ class _itemListState extends State<itemList> {
           }
         },
       ),
-
-      // Column(
-      //   children: [
-      //     carditem("1", "Hello", "전기", "1234"),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     carditem("2", "Hello", "전기", "1234"),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     carditem("3", "Hello", "전기", "1234"),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     carditem("4", "Hello", "전기", "1234")
-      //   ],
-      // ),
       bottomNavigationBar: Container(
           height: 60,
-          color: Colors.black12,
+          color: const Color.fromARGB(255, 2, 21, 104),
           child: Row(
             children: [
               Expanded(
                 flex: 1,
                 child: InkWell(
                   onTap: () {
-                    Get.to(powertoollist());
+                    Get.to(const powertoollist());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.power_outlined,
                         ),
                         Text(
                           'Power Tool',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),
@@ -122,19 +105,20 @@ class _itemListState extends State<itemList> {
                 flex: 1,
                 child: InkWell(
                   onTap: () {
-                    Get.to(typesep());
+                    Get.to(const typesep());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.search,
                         ),
                         Text(
                           '분류 보기',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),

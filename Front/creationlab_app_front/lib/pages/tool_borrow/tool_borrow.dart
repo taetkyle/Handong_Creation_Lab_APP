@@ -71,7 +71,7 @@ class _tool_borrowState extends State<tool_borrow> {
       ),
       bottomNavigationBar: Container(
         height: 60,
-        color: Colors.black12,
+        color: const Color.fromARGB(255, 2, 21, 104),
         child: InkWell(
           onTap: () {
             Get.to(borrowingpage());
@@ -81,12 +81,13 @@ class _tool_borrowState extends State<tool_borrow> {
             child: Column(
               children: <Widget>[
                 Icon(
+                  color: Colors.white,
                   Icons.arrow_circle_right_outlined,
                 ),
                 Text(
                   '대출하기',
                   style: TextStyle(
-                    // color: Color.fromARGB(255, 90, 90, 90),
+                    color: Color.fromARGB(255, 255, 255, 255),
                     fontFamily: "KoreanFont",
                     fontSize: 20,
                   ),

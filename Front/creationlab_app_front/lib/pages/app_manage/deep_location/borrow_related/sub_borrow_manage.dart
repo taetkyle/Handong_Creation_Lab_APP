@@ -19,7 +19,7 @@ class subBorrowManage extends StatelessWidget {
       body: cardborrow(username, toolname, date),
       bottomNavigationBar: Container(
           height: 60,
-          color: Colors.black12,
+          color: const Color.fromARGB(255, 2, 21, 104),
           child: Row(
             children: [
               Expanded(
@@ -33,12 +33,13 @@ class subBorrowManage extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.cancel,
                         ),
                         Text(
                           '취소',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),
@@ -53,19 +54,20 @@ class subBorrowManage extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     deleteDoc(docId);
-                    Get.offAll(borrowManage());
+                    Get.offAll(const borrowManage());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
                     child: Column(
                       children: <Widget>[
                         Icon(
+                          color: Colors.white,
                           Icons.check,
                         ),
                         Text(
                           '반납 확인',
                           style: TextStyle(
-                            // color: Color.fromARGB(255, 90, 90, 90),
+                            color: Colors.white,
                             fontFamily: "KoreanFont",
                             fontSize: 20,
                           ),
