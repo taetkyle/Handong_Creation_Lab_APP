@@ -176,6 +176,27 @@ class _itemAddingState extends State<itemAdding> {
                       ),
                     ),
                     onTap: () {
+                      if (numberEditingController.text.isEmpty ||
+                          engnameEditingController.text.isEmpty ||
+                          kornameEditingController.text.isEmpty ||
+                          detail_infoEditingController.text.isEmpty ||
+                          kortypeEditingController.text.isEmpty ||
+                          engtypeEditingController.text.isEmpty ||
+                          int.parse(numberEditingController.text) % 1 != 0) {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: const Text('오류'),
+                            content: const Text('입력한 값들을 확인 해주세요'),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, 'OK'),
+                                child: const Text('확인'),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
                       createData(
                           int.parse(numberEditingController.text),
                           engnameEditingController.text,
