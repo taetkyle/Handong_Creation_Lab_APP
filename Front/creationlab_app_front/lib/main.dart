@@ -1,11 +1,15 @@
+import 'dart:js';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'pages/homepage.dart';
 import 'package:get/get.dart';
+import 'provider/eng_kor_provider.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   // await dotenv.load(fileName: "config/.env");
   // final String apiKey = dotenv.env['ApiKey']!;
   // final String apiId = dotenv.env['ApiId']!;
@@ -19,11 +23,16 @@ void main() async {
 
   await Firebase.initializeApp(
       options: FirebaseOptions(
+          // apiKey: dotenv.env['ApiKey']!,
+          // appId: dotenv.env['ApiId']!,
+          // messagingSenderId: dotenv.env['MessagingSenderId']!,
+          // projectId: dotenv.env['ProjectId']!
           apiKey: apiKey,
           appId: apiId,
           messagingSenderId: messagingSenderId,
           projectId: projectId));
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => LangProvider(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

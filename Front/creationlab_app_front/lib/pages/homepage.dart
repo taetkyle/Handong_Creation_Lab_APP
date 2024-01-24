@@ -1,17 +1,18 @@
+import 'dart:js';
+
 import 'package:creationlab_app_front/firebase_functions/admin_related/admin_id_pw_call.dart';
 import 'package:creationlab_app_front/pages/tool_borrow/tool_borrow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'itemlist/itemlist.dart';
-import 'notification.dart';
-import 'package:creationlab_app_front/firebase_functions/item_related/createdata.dart';
-import 'app_manage/appManage.dart';
 import 'package:get/get.dart';
 import 'app_manage/administer_varify.dart';
-import 'package:creationlab_app_front/firebase_functions/item_related/itemcall.dart';
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 
 class Homepage extends StatelessWidget {
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
   Color textColor = const Color.fromARGB(255, 2, 21, 104);
+  // String stItList = ["물품 리스트", "Item List"][Provider.of<LangProvider>(BuildContext context, listen: false).language]
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,6 @@ class Homepage extends StatelessWidget {
                     ),
                   ),
                 )),
-
             Expanded(
                 flex: 3,
                 child: Row(
@@ -99,12 +99,10 @@ class Homepage extends StatelessWidget {
                     const Expanded(flex: 1, child: SizedBox()),
                   ],
                 )),
-
             const Expanded(
               flex: 2,
               child: SizedBox(),
             ),
-
             Expanded(
                 flex: 3,
                 child: Row(
@@ -130,7 +128,7 @@ class Homepage extends StatelessWidget {
                           ),
                         ),
                         onTap: () {
-                          Get.to(() => tool_borrow());
+                          Get.to(() => const tool_borrow());
                         },
                       ),
                     ),
@@ -166,28 +164,101 @@ class Homepage extends StatelessWidget {
               flex: 3,
               child: SizedBox(),
             ),
-
-            //추가로 영어버전 생기게 되면 activate
-            // Expanded(
-            //     flex: 1,
-            //     child: Row(
-            //       children: [
-            //         const Expanded(
-            //           flex: 1,
-            //           child: SizedBox(),
-            //         ),
-            //         const Expanded(
-            //           flex: 6,
-            //           child: Text(
-            //             "Please Select Language",
-            //             style: TextStyle(
-            //               fontFamily: "BoarderFont",
-            //             ),
-            //           ),
-            //         ),
-            //         Expanded(flex: 1, child: Container(color: Colors.amber)),
-            //       ],
-            //     )),
+            const Spacer(),
+            GestureDetector(
+              child: Container(
+                  width: 200,
+                  decoration: BoxDecoration(
+                      color: buttonColor,
+                      borderRadius: BorderRadius.circular(5)),
+                  height: 56, // Adjust the height as needed
+                  // Adjust the color as needed
+                  child: const Center(
+                      child: Text(
+                    "Language",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "KoreanFont",
+                      fontSize: 20,
+                    ),
+                  ))),
+              onTap: () {
+                showModalBottomSheet<void>(
+                  // shape: RoundedRectangleBorder(
+                  //     borderRadius:
+                  //         BorderRadius.vertical(top: Radius.circular(20))),
+                  context: context,
+                  builder: (BuildContext context) {
+                    return SizedBox(
+                      height: 100,
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          const Expanded(
+                            flex: 7,
+                            child: Center(
+                              child: Text(
+                                "Change to English version",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "KoreanFont",
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: GestureDetector(
+                              onTap: () {
+                                Provider.of<LangProvider>(context,
+                                        listen: false)
+                                    .changeToEng();
+                                Get.to(Homepage());
+                              },
+                              child: Container(
+                                width: 200,
+                                decoration: BoxDecoration(
+                                    color: buttonColor,
+                                    borderRadius: BorderRadius.circular(5)),
+                                height: 56, // Adjust the height as needed
+                                // Adjust the color as needed
+                                child: const Center(
+                                  child: Text(
+                                    "Change",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "KoreanFont",
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: IconButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                icon: const Icon(Icons.close)),
+                          )
+                          // SizedBox(
+                          //   height: 150,
+                          // )
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           ],
         ),
       ),

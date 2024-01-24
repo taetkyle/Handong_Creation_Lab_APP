@@ -21,11 +21,19 @@ class powertoollist extends StatelessWidget {
         crossAxisCount: 2,
         children: [
           Container(
-              margin: const EdgeInsets.all(5),
-              width: 200,
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(5))),
+            margin: const EdgeInsets.all(5),
+            width: 200,
+            decoration: BoxDecoration(
+              // color: Colors.blueGrey,
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(5),
+            ),
+            child: const Column(children: [
+              Text("안녕"),
+              Text("hello"),
+              Text("hello"),
+            ]),
+          ),
           Container(
               margin: const EdgeInsets.all(5),
               width: 200,
