@@ -1,11 +1,14 @@
 import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list_call.dart';
 import 'package:creationlab_app_front/firebase_functions/item_related/itemcall.dart';
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'masterpage.dart';
 import 'package:creationlab_app_front/firebase_functions/admin_related/admin.dart';
 import 'package:creationlab_app_front/firebase_functions/admin_related/admin_id_pw_call.dart';
+import 'package:provider/provider.dart';
+// LangProvider
 
 class administer_varify extends StatefulWidget {
   const administer_varify({super.key});
@@ -20,6 +23,7 @@ class _administer_varifyState extends State<administer_varify> {
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
   Color textColor = const Color.fromARGB(255, 2, 21, 104);
   Admin? admin;
+  int lang = 0;
 
   @override
   firstSetting() async {
@@ -35,8 +39,11 @@ class _administer_varifyState extends State<administer_varify> {
       showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: const Text('알림'),
-          content: const Text('해당 기능에 접근하시려면 운영자 아이디로 로그인 해주세요'),
+          title: Text(['알림', 'Notice'][lang]),
+          content: Text([
+            '해당 기능에 접근하시려면 운영자 아이디로 로그인 해주세요',
+            'Please login with admin account to access'
+          ][lang]),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'OK'),
@@ -52,6 +59,8 @@ class _administer_varifyState extends State<administer_varify> {
 
   @override
   Widget build(BuildContext context) {
+    lang = Provider.of<LangProvider>(context, listen: false).language;
+
     return Scaffold(
       body: Column(
         children: [
@@ -79,10 +88,10 @@ class _administer_varifyState extends State<administer_varify> {
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: TextField(
               controller: usernameEditingController,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '아이디',
-                  hintText: '운영자 이메일을 입력해주세요'),
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: ['아이디', 'ID'][lang],
+                  hintText: ['운영자 아이디을 입력해주세요', 'Type the admin ID'][lang]),
             ),
           ),
           Padding(
@@ -90,10 +99,13 @@ class _administer_varifyState extends State<administer_varify> {
             child: TextField(
               controller: passwordEditingController,
               obscureText: true,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '비밀번호',
-                  hintText: '운영자 비밀번호를 입력해주세요'),
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: ['비밀번호', 'Password'][lang],
+                  hintText: [
+                    '운영자 비밀번호를 입력해주세요',
+                    'Type the amin Password'
+                  ][lang]),
             ),
           ),
           const SizedBox(
@@ -111,10 +123,10 @@ class _administer_varifyState extends State<administer_varify> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
                         color: buttonColor),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        "취소",
-                        style: TextStyle(
+                        ["취소", "Cancel"][lang],
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "KoreanFont",
                           fontSize: 20,
@@ -137,10 +149,10 @@ class _administer_varifyState extends State<administer_varify> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
                         color: buttonColor),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        "로그인",
-                        style: TextStyle(
+                        ["로그인", "Login"][lang],
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "KoreanFont",
                           fontSize: 20,
@@ -151,17 +163,20 @@ class _administer_varifyState extends State<administer_varify> {
                   onTap: () {
                     if (usernameEditingController.text == admin?.id &&
                         passwordEditingController.text == admin?.pw) {
-                      Get.to(() => masterpage());
+                      Get.to(() => const masterpage());
                     } else {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          title: const Text('오류'),
-                          content: const Text('아이디나 비밀번호가 일치하지 않습니다'),
+                          title: Text(['오류', "Error"][lang]),
+                          content: Text([
+                            '아이디나 비밀번호가 일치하지 않습니다',
+                            'ID or PW is not correct'
+                          ][lang]),
                           actions: <Widget>[
                             TextButton(
                               onPressed: () => Navigator.pop(context, 'OK'),
-                              child: const Text('확인'),
+                              child: Text(['확인', "OK"][lang]),
                             ),
                           ],
                         ),

@@ -1,8 +1,11 @@
 import 'dart:js' as js;
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:creationlab_app_front/widget/card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:provider/provider.dart';
+// LangProvider
 
 class subItemList extends StatelessWidget {
   final String korname;
@@ -10,12 +13,15 @@ class subItemList extends StatelessWidget {
   final String detail_info;
   final String resources;
   final String kortype;
+  int lang = 0;
 
   subItemList(this.korname, this.number, this.detail_info, this.resources,
       this.kortype);
 
   @override
   Widget build(BuildContext context) {
+    lang = Provider.of<LangProvider>(context, listen: false).language;
+
     return Scaffold(
         body: Column(children: [
           carditem(number, korname, kortype, detail_info, resources),
@@ -63,16 +69,16 @@ class subItemList extends StatelessWidget {
                         onTap: () {
                           Get.back();
                         },
-                        child: const Padding(
-                          padding: EdgeInsets.only(top: 8.0),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
                           child: Column(
                             children: <Widget>[
-                              Icon(
+                              const Icon(
                                 Icons.cancel,
                               ),
                               Text(
-                                '확인',
-                                style: TextStyle(
+                                ['확인', "Close"][lang],
+                                style: const TextStyle(
                                   // color: Color.fromARGB(255, 90, 90, 90),
                                   fontFamily: "KoreanFont",
                                   fontSize: 20,
@@ -122,16 +128,16 @@ class subItemList extends StatelessWidget {
                         onTap: () {
                           Get.back();
                         },
-                        child: const Padding(
-                          padding: EdgeInsets.only(top: 8.0),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
                           child: Column(
                             children: <Widget>[
-                              Icon(
+                              const Icon(
                                 Icons.cancel,
                               ),
                               Text(
-                                '확인',
-                                style: TextStyle(
+                                ['확인', "Close"][lang],
+                                style: const TextStyle(
                                   // color: Color.fromARGB(255, 90, 90, 90),
                                   fontFamily: "KoreanFont",
                                   fontSize: 20,

@@ -1,10 +1,13 @@
 import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list_call.dart';
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:creationlab_app_front/widget/card_borrow.dart';
 import 'borrowingpage.dart';
 import 'package:get/get.dart';
 import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list.dart';
-import 'package:creationlab_app_front/firebase_functions/borrow_related/create_borrow_list.dart';
+// import 'package:creationlab_app_front/firebase_functions/borrow_related/create_borrow_list.dart';
+import 'package:provider/provider.dart';
+// LangProvider
 
 class tool_borrow extends StatefulWidget {
   const tool_borrow({super.key});
@@ -15,6 +18,7 @@ class tool_borrow extends StatefulWidget {
 
 class _tool_borrowState extends State<tool_borrow> {
   List<Borrowlist> borrowList = [];
+  int lang = 0;
 
   @override
   void initState() {
@@ -32,12 +36,14 @@ class _tool_borrowState extends State<tool_borrow> {
 
   @override
   Widget build(BuildContext context) {
+    lang = Provider.of<LangProvider>(context, listen: false).language;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 2, 21, 104),
-        title: const Text(
-          "대출 리스트",
-          style: TextStyle(
+        title: Text(
+          ["대출 리스트", "Equipment Loan List"][lang],
+          style: const TextStyle(
             color: Colors.white,
             fontFamily: "KoreanFont",
             fontSize: 30,
@@ -76,17 +82,18 @@ class _tool_borrowState extends State<tool_borrow> {
           onTap: () {
             Get.to(borrowingpage());
           },
-          child: const Padding(
-            padding: EdgeInsets.only(top: 8.0),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 8.0),
             child: Column(
               children: <Widget>[
-                Icon(
+                const Icon(
                   color: Colors.white,
                   Icons.arrow_circle_right_outlined,
                 ),
                 Text(
-                  '대출하기',
-                  style: TextStyle(
+                  ["대출하기", "Borrow"][lang],
+                  // '대출하기',
+                  style: const TextStyle(
                     color: Color.fromARGB(255, 255, 255, 255),
                     fontFamily: "KoreanFont",
                     fontSize: 20,

@@ -1,9 +1,12 @@
 import 'package:creationlab_app_front/pages/homepage.dart';
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:creationlab_app_front/firebase_functions/borrow_related/create_borrow_list.dart';
+import 'package:provider/provider.dart';
+// LangProvider
 
 class borrowingpage extends StatefulWidget {
   const borrowingpage({super.key});
@@ -17,8 +20,11 @@ class _borrowingpageState extends State<borrowingpage> {
   TextEditingController toolnameEditingController = TextEditingController();
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
   Color textColor = const Color.fromARGB(255, 2, 21, 104);
+  int lang = 0;
   @override
   Widget build(BuildContext context) {
+    lang = Provider.of<LangProvider>(context, listen: false).language;
+
     return Scaffold(
       body: Column(
         children: [
@@ -46,20 +52,25 @@ class _borrowingpageState extends State<borrowingpage> {
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: TextField(
               controller: usernameEditingController,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '본인 이름',
-                  hintText: '본인 이름을 작성해주세요'),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                labelText: ['본인 이름', 'your name'][lang],
+                hintText: ['본인 이름을 작성해주세요', 'Please write your name'][lang],
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
             child: TextField(
               controller: toolnameEditingController,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '장비 이름',
-                  hintText: '빌리실 장비 이름을 작성해주세요'),
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                labelText: ['장비 이름', 'Tool name'][lang],
+                hintText: [
+                  '빌리실 장비 이름을 작성해주세요',
+                  'Please write the tool\'s name'
+                ][lang],
+              ),
             ),
           ),
           const SizedBox(
@@ -77,10 +88,10 @@ class _borrowingpageState extends State<borrowingpage> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
                         color: buttonColor),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        "취소",
-                        style: TextStyle(
+                        ['취소', 'cancel'][lang],
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "KoreanFont",
                           fontSize: 20,
@@ -103,10 +114,10 @@ class _borrowingpageState extends State<borrowingpage> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
                         color: buttonColor),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        "빌리기",
-                        style: TextStyle(
+                        ['빌리기', 'Borrow'][lang],
+                        style: const TextStyle(
                           color: Colors.white,
                           fontFamily: "KoreanFont",
                           fontSize: 20,
