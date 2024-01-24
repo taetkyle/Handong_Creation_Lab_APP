@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:creationlab_app_front/firebase_functions/admin_related/admin_id_pw_call.dart';
 import 'package:creationlab_app_front/pages/tool_borrow/tool_borrow.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +8,15 @@ import 'app_manage/administer_varify.dart';
 import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 
 class Homepage extends StatelessWidget {
+  // const Homepage({super.key});
+
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
   Color textColor = const Color.fromARGB(255, 2, 21, 104);
-  // String stItList = ["물품 리스트", "Item List"][Provider.of<LangProvider>(BuildContext context, listen: false).language]
+  int lang = 0;
 
   @override
   Widget build(BuildContext context) {
+    lang = Provider.of<LangProvider>(context, listen: false).language;
     return Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
@@ -53,10 +54,10 @@ class Homepage extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               color: buttonColor),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              "물품 리스트",
-                              style: TextStyle(
+                              ["물품 리스트", "Item List"][lang],
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: "KoreanFont",
                                 fontSize: 20,
@@ -78,10 +79,10 @@ class Homepage extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               color: buttonColor),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              "유의 사항",
-                              style: TextStyle(
+                              ["유의 사항", "notification"][lang],
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: "KoreanFont",
                                 fontSize: 20,
@@ -116,10 +117,10 @@ class Homepage extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               color: buttonColor),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              "장비 대출",
-                              style: TextStyle(
+                              ["장비 대출", "Tool Borrow"][lang],
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: "KoreanFont",
                                 fontSize: 20,
@@ -141,10 +142,10 @@ class Homepage extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               color: buttonColor),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              "어플 관리",
-                              style: TextStyle(
+                              ["어플 관리", "App Management"][lang],
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: "KoreanFont",
                                 fontSize: 20,
@@ -196,12 +197,15 @@ class Homepage extends StatelessWidget {
                           const SizedBox(
                             width: 10,
                           ),
-                          const Expanded(
+                          Expanded(
                             flex: 7,
                             child: Center(
                               child: Text(
-                                "Change to English version",
-                                style: TextStyle(
+                                [
+                                  "Change to English version",
+                                  "한국어로 바꾸겠습니까?"
+                                ][lang],
+                                style: const TextStyle(
                                   color: Colors.black,
                                   fontFamily: "KoreanFont",
                                   fontSize: 20,
@@ -213,10 +217,14 @@ class Homepage extends StatelessWidget {
                             flex: 3,
                             child: GestureDetector(
                               onTap: () {
-                                Provider.of<LangProvider>(context,
-                                        listen: false)
-                                    .changeToEng();
-                                Get.to(Homepage());
+                                (lang == 0)
+                                    ? Provider.of<LangProvider>(context,
+                                            listen: false)
+                                        .changeToEng()
+                                    : Provider.of<LangProvider>(context,
+                                            listen: false)
+                                        .changeToKor();
+                                Get.offAll(Homepage());
                               },
                               child: Container(
                                 width: 200,
@@ -238,7 +246,7 @@ class Homepage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Expanded(

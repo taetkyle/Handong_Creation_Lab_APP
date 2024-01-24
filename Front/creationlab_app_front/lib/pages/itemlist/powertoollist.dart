@@ -1,10 +1,16 @@
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class powertoollist extends StatelessWidget {
-  const powertoollist({super.key});
+  // const powertoollist({super.key});
+  int lang = 0;
 
   @override
   Widget build(BuildContext context) {
+    lang = Provider.of<LangProvider>(context, listen: false).language;
+    print(lang);
+    print("네");
     return Scaffold(
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 21, 104),
@@ -28,10 +34,12 @@ class powertoollist extends StatelessWidget {
               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(5),
             ),
-            child: const Column(children: [
-              Text("안녕"),
-              Text("hello"),
-              Text("hello"),
+            child: Column(children: [
+              // Text()
+              Text(["Hello", "안녕"][lang]),
+              const Text("안녕"),
+              const Text("hello"),
+              const Text("hello"),
             ]),
           ),
           Container(

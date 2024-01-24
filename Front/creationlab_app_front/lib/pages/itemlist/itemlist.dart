@@ -78,7 +78,7 @@ class _itemListState extends State<itemList> {
                 flex: 1,
                 child: InkWell(
                   onTap: () {
-                    Get.to(const powertoollist());
+                    Get.to(powertoollist());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
