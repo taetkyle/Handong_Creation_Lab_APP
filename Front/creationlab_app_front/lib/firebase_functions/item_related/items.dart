@@ -6,6 +6,7 @@ class Itemss {
   final String korname;
   final int number;
   final String detail_info;
+  final String eng_detailed_info;
   final String resources;
   final String kortype;
   final String engtype;
@@ -16,6 +17,7 @@ class Itemss {
     required this.korname,
     required this.number,
     required this.detail_info,
+    required this.eng_detailed_info,
     required this.resources,
     required this.kortype,
     required this.engtype,
@@ -27,6 +29,7 @@ class Itemss {
     return Itemss(
       docId: doc.id,
       detail_info: data["detail_info"],
+      eng_detailed_info: data["eng_detailed_info"],
       engname: data["engname"],
       engtype: data["engtype"],
       korname: data["korname"],
@@ -39,6 +42,7 @@ class Itemss {
   Map<String, dynamic> toJson() {
     return {
       "detail_info": detail_info,
+      "eng_detailed_info": eng_detailed_info,
       "engname": engname,
       "engtype": engtype,
       "korname": korname,

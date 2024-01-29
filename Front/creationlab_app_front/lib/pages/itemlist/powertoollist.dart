@@ -9,8 +9,6 @@ class powertoollist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     lang = Provider.of<LangProvider>(context, listen: false).language;
-    print(lang);
-    print("네");
     return Scaffold(
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 21, 104),

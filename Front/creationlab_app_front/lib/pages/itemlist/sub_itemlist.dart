@@ -31,26 +31,17 @@ class subItemList extends StatelessWidget {
           Row(
             children: [
               const Expanded(flex: 3, child: SizedBox()),
-              // const Expanded(
-              //   flex: 2,
-              //   child: Text(
-              //     "설명",
-              //     style: TextStyle(
-              //       // color: Color.fromARGB(255, 90, 90, 90),
-              //       fontFamily: "KoreanFont",
-              //       fontSize: 40,
-              //     ),
-              //   ),
-              // ),
-              const Expanded(flex: 1, child: SizedBox()),
+              // const Expanded(flex: 1, child: SizedBox()),
               Expanded(
-                  flex: 10,
-                  child: Text(
-                    detail_info,
-                    style: const TextStyle(
-                      // color: Color.fromARGB(255, 90, 90, 90),
-                      fontFamily: "KoreanFont",
-                      fontSize: 20,
+                  flex: 15,
+                  child: Center(
+                    child: Text(
+                      detail_info,
+                      style: const TextStyle(
+                        // color: Color.fromARGB(255, 90, 90, 90),
+                        fontFamily: "KoreanFont",
+                        fontSize: 20,
+                      ),
                     ),
                   )),
               const Expanded(flex: 3, child: SizedBox()),

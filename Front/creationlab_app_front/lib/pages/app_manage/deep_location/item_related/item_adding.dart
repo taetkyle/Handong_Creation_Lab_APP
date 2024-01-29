@@ -19,6 +19,8 @@ class _itemAddingState extends State<itemAdding> {
   TextEditingController kornameEditingController = TextEditingController();
   TextEditingController numberEditingController = TextEditingController();
   TextEditingController detail_infoEditingController = TextEditingController();
+  TextEditingController eng_detail_infoEditingController =
+      TextEditingController();
   TextEditingController resourcesEditingController = TextEditingController();
   TextEditingController kortypeEditingController = TextEditingController();
   TextEditingController engtypeEditingController = TextEditingController();
@@ -91,6 +93,18 @@ class _itemAddingState extends State<itemAdding> {
                     border: OutlineInputBorder(),
                     labelText: '세부정보',
                     hintText: '세부정보을 작성해주세요'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                controller: eng_detail_infoEditingController,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: '영문 세부정보',
+                    hintText: '영문 세부정보을 작성해주세요'),
               ),
             ),
             Padding(
@@ -202,6 +216,7 @@ class _itemAddingState extends State<itemAdding> {
                           engnameEditingController.text,
                           kornameEditingController.text,
                           detail_infoEditingController.text,
+                          eng_detail_infoEditingController.text,
                           kortypeEditingController.text,
                           engtypeEditingController.text,
                           resourcesEditingController.text);

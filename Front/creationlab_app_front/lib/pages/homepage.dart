@@ -37,7 +37,7 @@ class Homepage extends StatelessWidget {
                     style: TextStyle(
                       color: Color.fromARGB(255, 90, 90, 90),
                       fontFamily: "KoreanFont",
-                      fontSize: 70,
+                      fontSize: 80,
                     ),
                   ),
                 )),

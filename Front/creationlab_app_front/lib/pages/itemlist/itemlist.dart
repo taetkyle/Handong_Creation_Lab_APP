@@ -43,7 +43,7 @@ class _itemListState extends State<itemList> {
           backgroundColor: const Color.fromARGB(255, 2, 21, 104),
           title: Text(
             ["물품 리스트", "Item Lists"][lang],
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontFamily: "KoreanFont",
               fontSize: 30,
@@ -69,7 +69,7 @@ class _itemListState extends State<itemList> {
                               itemsList[index].number.toString(),
                               itemsList[index].engname,
                               itemsList[index].engtype,
-                              itemsList[index].detail_info,
+                              itemsList[index].eng_detailed_info,
                               itemsList[index].resources),
                       const SizedBox(
                         height: 10,
@@ -102,7 +102,7 @@ class _itemListState extends State<itemList> {
                           Icons.power_outlined,
                         ),
                         Text(
-                          'Power Tool',
+                          'Tools',
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: "KoreanFont",
