@@ -71,67 +71,73 @@ class _itemManageState extends State<itemManage> {
           }
         },
       ),
-      bottomNavigationBar: Container(
-          height: 60,
-          color: const Color.fromARGB(255, 2, 21, 104),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: InkWell(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          color: Colors.white,
-                          Icons.cancel,
-                        ),
-                        Text(
-                          '취소',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "KoreanFont",
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: InkWell(
-                  onTap: () {
-                    Get.to(const itemAdding());
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(top: 8.0),
-                    child: Column(
-                      children: <Widget>[
-                        Icon(
-                          color: Colors.white,
-                          Icons.add,
-                        ),
-                        Text(
-                          '추가',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: "KoreanFont",
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: const Color.fromARGB(255, 2, 21, 104),
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Get.to(const itemAdding());
+          }),
+      // bottomNavigationBar: Container(
+      //     height: 60,
+      //     color: const Color.fromARGB(255, 2, 21, 104),
+      //     child: Row(
+      //       children: [
+      //         Expanded(
+      //           flex: 1,
+      //           child: InkWell(
+      //             onTap: () {
+      //               Get.back();
+      //             },
+      //             child: const Padding(
+      //               padding: EdgeInsets.only(top: 8.0),
+      //               child: Column(
+      //                 children: <Widget>[
+      //                   Icon(
+      //                     color: Colors.white,
+      //                     Icons.cancel,
+      //                   ),
+      //                   Text(
+      //                     '취소',
+      //                     style: TextStyle(
+      //                       color: Colors.white,
+      //                       fontFamily: "KoreanFont",
+      //                       fontSize: 20,
+      //                     ),
+      //                   ),
+      //                 ],
+      //               ),
+      //             ),
+      //           ),
+      //         ),
+      //         Expanded(
+      //           flex: 1,
+      //           child: InkWell(
+      //             onTap: () {
+      //               Get.to(const itemAdding());
+      //             },
+      //             child: const Padding(
+      //               padding: EdgeInsets.only(top: 8.0),
+      //               child: Column(
+      //                 children: <Widget>[
+      //                   Icon(
+      //                     color: Colors.white,
+      //                     Icons.add,
+      //                   ),
+      //                   Text(
+      //                     '추가',
+      //                     style: TextStyle(
+      //                       color: Colors.white,
+      //                       fontFamily: "KoreanFont",
+      //                       fontSize: 20,
+      //                     ),
+      //                   ),
+      //                 ],
+      //               ),
+      //             ),
+      //           ),
+      //         ),
+      //       ],
+      //     )),
     );
   }
 }
