@@ -1,11 +1,9 @@
 import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
-import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 import 'package:creationlab_app_front/firebase_functions/tools_related/tools.dart';
 import 'package:creationlab_app_front/firebase_functions/tools_related/toolscall.dart';
+import 'package:creationlab_app_front/widget/card_powertool.dart';
 
 class powertoollist extends StatefulWidget {
   const powertoollist({Key? key});
@@ -61,25 +59,135 @@ class _powertoollistState extends State<powertoollist> {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        margin: const EdgeInsets.all(5),
-                        width: 300,
-                        decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 229, 228, 228),
-                            border: Border.all(
+                          margin: const EdgeInsets.all(5),
+                          width: 300,
+                          decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 229, 228, 228),
-                            ),
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(20))),
-                        child: Column(
-                          children: [
-                            // Add the content/widgets for each tool here
-                            Text(lang == 0
-                                ? tool.kor_tool_type
-                                : tool.eng_tool_type),
-                            // Add other properties as needed
-                          ],
-                        ),
-                      ),
+                              border: Border.all(
+                                color: const Color.fromARGB(255, 229, 228, 228),
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20))),
+                          child: (lang == 0)
+                              ? carditem(
+                                  tool.kor_tool_type,
+                                  tool.model_name,
+                                  tool.kor_warning,
+                                  tool.kor_usage,
+                                  tool.kor_related_tool,
+                                  tool.resources)
+                              : carditem(
+                                  tool.eng_tool_type,
+                                  tool.model_name,
+                                  tool.eng_warning,
+                                  tool.eng_usage,
+                                  tool.eng_related_tool,
+                                  tool.resources)
+                          // ? Column(
+                          //     children: [
+                          //       Image.asset(
+                          //           cacheHeight: 70,
+                          //           'assets/image/handong_logo.png'),
+                          //       Spacer(),
+                          //       Row(
+                          //         children: [
+                          //           const Expanded(
+                          //             flex: 1,
+                          //             child: SizedBox(
+                          //               width: 10,
+                          //             ),
+                          //           ),
+                          //           const Expanded(
+                          //               flex: 4,
+                          //               child: Text(
+                          //                 "Type:",
+                          //                 style: TextStyle(
+                          //                   color: Colors.black,
+                          //                   fontFamily: "KoreanFont",
+                          //                   fontSize: 15,
+                          //                 ),
+                          //               )),
+                          //           const Expanded(
+                          //             flex: 1,
+                          //             child: SizedBox(
+                          //               width: 10,
+                          //             ),
+                          //           ),
+                          //           Expanded(
+                          //               flex: 12,
+                          //               child: Text(
+                          //                 tool.kor_tool_type,
+                          //                 style: const TextStyle(
+                          //                   color: Colors.black,
+                          //                   fontFamily: "KoreanFont",
+                          //                   fontSize: 15,
+                          //                 ),
+                          //               )),
+                          //           const Expanded(
+                          //             flex: 1,
+                          //             child: SizedBox(
+                          //               width: 10,
+                          //             ),
+                          //           ),
+                          //         ],
+                          //         // mainAxisAlignment:
+                          //         //     MainAxisAlignment.start,
+                          //       ),
+                          //     ],
+                          //   )
+                          // : Column(
+                          //     children: [
+                          //       Image.asset(
+                          //           cacheHeight: 70,
+                          //           'assets/image/handong_logo.png'),
+                          //       Spacer(),
+                          //       Row(
+                          //         children: [
+                          //           const Expanded(
+                          //             flex: 1,
+                          //             child: SizedBox(
+                          //               width: 10,
+                          //             ),
+                          //           ),
+                          //           const Expanded(
+                          //               flex: 4,
+                          //               child: Text(
+                          //                 "Type:",
+                          //                 style: TextStyle(
+                          //                   color: Colors.black,
+                          //                   fontFamily: "KoreanFont",
+                          //                   fontSize: 15,
+                          //                 ),
+                          //               )),
+                          //           const Expanded(
+                          //             flex: 1,
+                          //             child: SizedBox(
+                          //               width: 10,
+                          //             ),
+                          //           ),
+                          //           Expanded(
+                          //               flex: 12,
+                          //               child: Text(
+                          //                 tool.eng_tool_type,
+                          //                 style: const TextStyle(
+                          //                   color: Colors.black,
+                          //                   fontFamily: "KoreanFont",
+                          //                   fontSize: 15,
+                          //                 ),
+                          //               )),
+                          //           const Expanded(
+                          //             flex: 1,
+                          //             child: SizedBox(
+                          //               width: 10,
+                          //             ),
+                          //           ),
+                          //         ],
+                          //         // mainAxisAlignment:
+                          //         //     MainAxisAlignment.start,
+                          //       ),
+                          //     ],
+                          //   ),
+                          ),
                     ),
                     // const SizedBox(
                     //   height: 10,

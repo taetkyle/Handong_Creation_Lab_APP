@@ -19,11 +19,38 @@ class itemList extends StatefulWidget {
 class _itemListState extends State<itemList> {
   List<Itemss> itemsList = [];
   int lang = 0;
+  final ScrollController _scrollController = ScrollController();
+  double scrollRatio = 0;
+  String scrollDirection = "";
 
   @override
   void initState() {
+    _scrollController.addListener(() {
+      scrollListener();
+    });
     firstSetting();
     super.initState();
+  }
+
+  scrollListener() async {
+    setState(() {
+      scrollRatio =
+          _scrollController.offset / _scrollController.position.maxScrollExtent;
+      scrollDirection =
+          _scrollController.position.userScrollDirection.toString();
+      // print(scrollDirection + scrollRatio.toString());
+    });
+
+    // print('offset = ${_scrollController.offset}');
+    // print(
+    //     (_scrollController.offset / _scrollController.position.maxScrollExtent)
+    //         .toString());
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,25 +66,48 @@ class _itemListState extends State<itemList> {
     lang = Provider.of<LangProvider>(context, listen: false).language;
 
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 2, 21, 104),
-          title: Text(
-            ["물품 리스트", "Item Lists"][lang],
-            style: const TextStyle(
-              color: Colors.white,
-              fontFamily: "KoreanFont",
-              fontSize: 30,
-            ),
-          )),
+      // appBar: SliverAppBar(title: "dd", floating: true),
+      appBar:
+          (scrollDirection == "ScrollDirection.forward" || scrollRatio < 0.1)
+              ? AppBar(
+                  backgroundColor: const Color.fromARGB(255, 2, 21, 104),
+                  title: Text(
+                    ["물품 리스트", "Item Lists"][lang],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: "KoreanFont",
+                      fontSize: 30,
+                    ),
+                  ))
+              : null,
       body: FutureBuilder(
         future: firstSetting(),
         builder: (context, snapshot) {
           if (snapshot.data != false) {
             return ListView.builder(
+                controller: _scrollController,
                 itemCount: itemsList.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
                     children: [
+                      // Stack(
+                      //   children: <Widget>[
+                      //     Container(
+                      //       color: Color(0xffABEBC6),
+                      //       width: MediaQuery.of(context).size.width,
+                      //       height: 4,
+                      //     ),
+                      //     Container(
+                      //       color: Colors.green,
+                      //       width:
+                      //           MediaQuery.of(context).size.width * scrollRatio,
+                      //       // _scrollController.offset /
+                      //       // _scrollController.position.maxScrollExtent,
+                      //       height: 4,
+                      //     ),
+                      //   ],
+                      // ),
+                      // Text(scrollLocation()),
                       (lang == 0)
                           ? carditem(
                               itemsList[index].number.toString(),

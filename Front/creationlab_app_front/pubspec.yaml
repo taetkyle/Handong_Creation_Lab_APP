@@ -74,6 +74,20 @@ flutter:
   assets:
     - assets/image/handong_logo.png
     - assets/image/handong_logo_small.png
+    - assets/image/elect_driver.jpg
+    - assets/image/angg.jpg
+    - assets/image/batcha.jpg
+    - assets/image/bench.jpg
+    - assets/image/comp.jpg
+    - assets/image/hako.jpg
+    - assets/image/jigsaw.jpg
+    - assets/image/jull.jpg
+    - assets/image/ocilo.jpg
+    - assets/image/powersup.jpg
+    - assets/image/ruler.jpg
+    - assets/image/stand.jpg
+    - assets/image/strip.jpg
+    - assets/image/베터리.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
