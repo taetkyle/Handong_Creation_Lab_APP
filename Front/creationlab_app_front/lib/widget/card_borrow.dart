@@ -1,11 +1,9 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget cardborrow(
-  String username,
-  String toolname,
-  String date,
-) {
+Widget cardborrow(String username, String toolname, String date, context) {
   int contextSpace = 1;
   int contextFont = 3;
 
@@ -54,16 +52,24 @@ Widget cardborrow(
             child: SizedBox(),
           ),
           Expanded(
-            flex: 3,
-            child: Text(
-              date,
-              style: const TextStyle(
-                color: Colors.black,
-                fontFamily: "KoreanFont",
-                fontSize: 20,
-              ),
-            ),
-          ),
+              flex: 3,
+              child: (MediaQuery.of(context).size.width > 600)
+                  ? Text(
+                      date,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: "KoreanFont",
+                        fontSize: 20,
+                      ),
+                    )
+                  : Text(
+                      date[2] + date[3] + date[4] + date[5] + date[6],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: "KoreanFont",
+                        fontSize: 20,
+                      ),
+                    )),
           Expanded(
             flex: contextSpace,
             child: const SizedBox(),

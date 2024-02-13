@@ -8,7 +8,7 @@ Widget carditem(String tooltype, String modelname, String warning, String usage,
     String related, String resources) {
   int contextSpace = 1;
   int contextFont = 3;
-  print(imageSelect(tooltype));
+
   return InkWell(
       onTap: () {
         Get.to(subPowerToolList(
@@ -16,52 +16,54 @@ Widget carditem(String tooltype, String modelname, String warning, String usage,
       },
       child: Column(
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Image.asset(cacheHeight: 150, imageSelect(tooltype)),
-          Spacer(),
-          Row(
-            children: [
-              const Expanded(
-                flex: 1,
-                child: SizedBox(
-                  width: 10,
+          const Spacer(),
+          Expanded(
+            child: Row(
+              children: [
+                const Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 10,
+                  ),
                 ),
-              ),
-              const Expanded(
-                  flex: 4,
-                  child: Text(
-                    "Type:",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: "KoreanFont",
-                      fontSize: 15,
-                    ),
-                  )),
-              const Expanded(
-                flex: 1,
-                child: SizedBox(
-                  width: 10,
+                const Expanded(
+                    flex: 4,
+                    child: Text(
+                      "Type:",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: "KoreanFont",
+                        fontSize: 15,
+                      ),
+                    )),
+                const Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 10,
+                  ),
                 ),
-              ),
-              Expanded(
-                  flex: 12,
-                  child: Text(
-                    tooltype,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontFamily: "KoreanFont",
-                      fontSize: 15,
-                    ),
-                  )),
-              const Expanded(
-                flex: 1,
-                child: SizedBox(
-                  width: 10,
+                Expanded(
+                    flex: 12,
+                    child: Text(
+                      tooltype,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: "KoreanFont",
+                        fontSize: 15,
+                      ),
+                    )),
+                const Expanded(
+                  flex: 1,
+                  child: SizedBox(
+                    width: 10,
+                  ),
                 ),
-              ),
-            ],
-            // mainAxisAlignment:
-            //     MainAxisAlignment.start,
+              ],
+              // mainAxisAlignment:
+              //     MainAxisAlignment.start,
+            ),
           ),
           SizedBox(
             height: 10,

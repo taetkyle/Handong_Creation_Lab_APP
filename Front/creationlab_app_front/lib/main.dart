@@ -1,5 +1,6 @@
-import 'dart:js';
-
+import 'package:creationlab_app_front/pages/app_manage/administer_varify.dart';
+import 'package:creationlab_app_front/pages/itemlist/itemlist.dart';
+import 'package:creationlab_app_front/pages/tool_borrow/tool_borrow.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,13 +17,13 @@ void main() async {
   // final String messagingSenderId = dotenv.env['MessagingSenderId']!;
   // final String projectId = dotenv.env['ProjectId']!;
 
-  final String apiKey = "AIzaSyBI_VxUDaDpw39Y4_ZG07SZo6ZsQWnMWM0";
-  final String apiId = "1:1049693809515:web:7562ee321be73c36957a2e";
-  final String messagingSenderId = "1049693809515";
-  final String projectId = "handongcreationlab";
+  const String apiKey = "AIzaSyBI_VxUDaDpw39Y4_ZG07SZo6ZsQWnMWM0";
+  const String apiId = "1:1049693809515:web:7562ee321be73c36957a2e";
+  const String messagingSenderId = "1049693809515";
+  const String projectId = "handongcreationlab";
 
   await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
           // apiKey: dotenv.env['ApiKey']!,
           // appId: dotenv.env['ApiId']!,
           // messagingSenderId: dotenv.env['MessagingSenderId']!,
@@ -38,6 +39,27 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // MaterialColor createMaterialColor(Color color) {
+  //   List strengths = <double>[.05];
+  //   Map<int, Color> swatch = {};
+  //   final int r = color.red, g = color.green, b = color.blue;
+
+  //   for (int i = 1; i < 10; i++) {
+  //     strengths.add(0.1 * i);
+  //   }
+  //   for (var strength in strengths) {
+  //     final double ds = 0.5 - strength;
+  //     swatch[(strength * 1000).round()] = Color.fromRGBO(
+  //       r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+  //       g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+  //       b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+  //       1,
+  //     );
+  //   }
+
+  //   return MaterialColor(color.value, swatch);
+  // }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -45,11 +67,28 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: Homepage(),
       home: Homepage(),
+      // theme: ThemeData(
+      //     primarySwatch: createMaterialColor(
+      //   const Color.fromARGB(255, 2, 21, 104),
+      // )),
       getPages: [
         GetPage(
           name: '/',
           page: () => Homepage(),
         ),
+        GetPage(
+          name: '/itemlist',
+          page: () => const itemList(),
+        ),
+        GetPage(
+          name: '/tool_borrow',
+          page: () => const tool_borrow(),
+        ),
+        GetPage(
+          name: '/administer_varify',
+          page: () => const administer_varify(),
+        ),
+
         // Gepublic
       ],
     );

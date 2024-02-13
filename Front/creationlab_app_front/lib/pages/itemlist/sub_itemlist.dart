@@ -23,6 +23,17 @@ class subItemList extends StatelessWidget {
     lang = Provider.of<LangProvider>(context, listen: false).language;
 
     return Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 2, 21, 104),
+          // title: Text(
+          //   ["물품 리스트", "Item Lists"][lang],
+          //   style: TextStyle(
+          //     color: Colors.white,
+          //     fontFamily: "KoreanFont",
+          //     fontSize: 30,
+          //   ),
+          // ),
+        ),
         body: Column(children: [
           carditem(number, korname, kortype, detail_info, resources),
           const SizedBox(
@@ -52,94 +63,30 @@ class subItemList extends StatelessWidget {
             ? Container(
                 height: 60,
                 color: Colors.black12,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Column(
-                            children: <Widget>[
-                              const Icon(
-                                Icons.cancel,
-                              ),
-                              Text(
-                                ['확인', "Close"][lang],
-                                style: const TextStyle(
-                                  // color: Color.fromARGB(255, 90, 90, 90),
-                                  fontFamily: "KoreanFont",
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
+                child: InkWell(
+                  onTap: () {
+                    js.context.callMethod('open', [resources]);
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: Column(
+                      children: <Widget>[
+                        Icon(
+                          Icons.arrow_right_alt_outlined,
+                        ),
+                        Text(
+                          'Resources',
+                          style: TextStyle(
+                            // color: Color.fromARGB(255, 90, 90, 90),
+                            fontFamily: "KoreanFont",
+                            fontSize: 20,
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: InkWell(
-                        onTap: () {
-                          js.context.callMethod('open', [resources]);
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.only(top: 8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Icon(
-                                Icons.arrow_right_alt_outlined,
-                              ),
-                              Text(
-                                'Resources',
-                                style: TextStyle(
-                                  // color: Color.fromARGB(255, 90, 90, 90),
-                                  fontFamily: "KoreanFont",
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ))
-            : Container(
-                height: 60,
-                color: Colors.black12,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: InkWell(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Column(
-                            children: <Widget>[
-                              const Icon(
-                                Icons.cancel,
-                              ),
-                              Text(
-                                ['확인', "Close"][lang],
-                                style: const TextStyle(
-                                  // color: Color.fromARGB(255, 90, 90, 90),
-                                  fontFamily: "KoreanFont",
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )));
+                  ),
+                ),
+              )
+            : null);
   }
 }

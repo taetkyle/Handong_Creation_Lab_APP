@@ -38,13 +38,7 @@ class _itemListState extends State<itemList> {
           _scrollController.offset / _scrollController.position.maxScrollExtent;
       scrollDirection =
           _scrollController.position.userScrollDirection.toString();
-      // print(scrollDirection + scrollRatio.toString());
     });
-
-    // print('offset = ${_scrollController.offset}');
-    // print(
-    //     (_scrollController.offset / _scrollController.position.maxScrollExtent)
-    //         .toString());
   }
 
   @override
@@ -114,13 +108,15 @@ class _itemListState extends State<itemList> {
                               itemsList[index].korname,
                               itemsList[index].kortype,
                               itemsList[index].detail_info,
-                              itemsList[index].resources)
+                              itemsList[index].resources,
+                            )
                           : carditem(
                               itemsList[index].number.toString(),
                               itemsList[index].engname,
                               itemsList[index].engtype,
                               itemsList[index].eng_detailed_info,
-                              itemsList[index].resources),
+                              itemsList[index].resources,
+                            ),
                       const SizedBox(
                         height: 10,
                       ),

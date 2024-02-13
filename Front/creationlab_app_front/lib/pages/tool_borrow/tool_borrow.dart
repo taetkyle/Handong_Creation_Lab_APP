@@ -19,14 +19,19 @@ class tool_borrow extends StatefulWidget {
 class _tool_borrowState extends State<tool_borrow> {
   List<Borrowlist> borrowList = [];
   int lang = 0;
+  final ScrollController _scrollController = ScrollController();
+  double scrollRatio = 0;
+  String scrollDirection = "";
 
   @override
   void initState() {
+    _scrollController.addListener(() {
+      scrollListener();
+    });
     firstSetting();
     super.initState();
   }
 
-  @override
   firstSetting() async {
     borrowList = await borrowlistcallFireStore();
     if (borrowList.isNotEmpty) {
@@ -34,22 +39,33 @@ class _tool_borrowState extends State<tool_borrow> {
     }
   }
 
+  scrollListener() async {
+    setState(() {
+      scrollRatio =
+          _scrollController.offset / _scrollController.position.maxScrollExtent;
+      scrollDirection =
+          _scrollController.position.userScrollDirection.toString();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     lang = Provider.of<LangProvider>(context, listen: false).language;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 2, 21, 104),
-        title: Text(
-          ["대출 리스트", "Equipment Loan List"][lang],
-          style: const TextStyle(
-            color: Colors.white,
-            fontFamily: "KoreanFont",
-            fontSize: 30,
-          ),
-        ),
-      ),
+      appBar:
+          (scrollDirection == "ScrollDirection.forward" || scrollRatio < 0.1)
+              ? AppBar(
+                  backgroundColor: const Color.fromARGB(255, 2, 21, 104),
+                  title: Text(
+                    ["대출 리스트", "Equipment Loan List"][lang],
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontFamily: "KoreanFont",
+                      fontSize: 30,
+                    ),
+                  ))
+              : null,
       body: FutureBuilder(
         future: firstSetting(),
         builder: (context, snapshot) {
@@ -60,10 +76,10 @@ class _tool_borrowState extends State<tool_borrow> {
                   return Column(
                     children: [
                       cardborrow(
-                        borrowList[index].username,
-                        borrowList[index].toolname,
-                        borrowList[index].date,
-                      ),
+                          borrowList[index].username,
+                          borrowList[index].toolname,
+                          borrowList[index].date,
+                          context),
                       const SizedBox(
                         height: 10,
                       ),

@@ -21,7 +21,7 @@ class Homepage extends StatelessWidget {
       decoration: const BoxDecoration(
           image: DecorationImage(
               opacity: 0.3,
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
               image: AssetImage(
                 'assets/image/handong_logo.png',
               ))),
