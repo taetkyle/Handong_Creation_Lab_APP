@@ -57,33 +57,24 @@ class _powertoollistState extends State<powertoollist> {
                 return Column(
                   children: [
                     Expanded(
-                      flex: 1,
-                      child: Container(
-                          margin: const EdgeInsets.all(5),
-                          width: 300,
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 229, 228, 228),
-                              border: Border.all(
-                                color: const Color.fromARGB(255, 229, 228, 228),
-                              ),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(20))),
-                          child: (lang == 0)
-                              ? carditem(
-                                  tool.kor_tool_type,
-                                  tool.model_name,
-                                  tool.kor_warning,
-                                  tool.kor_usage,
-                                  tool.kor_related_tool,
-                                  tool.resources)
-                              : carditem(
-                                  tool.eng_tool_type,
-                                  tool.model_name,
-                                  tool.eng_warning,
-                                  tool.eng_usage,
-                                  tool.eng_related_tool,
-                                  tool.resources)),
-                    ),
+                        flex: 1,
+                        child: (lang == 0)
+                            ? carditem(
+                                tool.kor_tool_type,
+                                tool.model_name,
+                                tool.kor_warning,
+                                tool.kor_usage,
+                                tool.kor_related_tool,
+                                tool.resources,
+                                tool.kor_risk)
+                            : carditem(
+                                tool.eng_tool_type,
+                                tool.model_name,
+                                tool.eng_warning,
+                                tool.eng_usage,
+                                tool.eng_related_tool,
+                                tool.resources,
+                                tool.eng_risk)),
 
                     // const SizedBox(
                     //   height: 10,

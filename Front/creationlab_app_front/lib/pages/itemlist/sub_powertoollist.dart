@@ -10,11 +10,12 @@ class subPowerToolList extends StatelessWidget {
   final String warning;
   final String usage;
   final String related;
+  final String risk;
   final String resources;
   int lang = 0;
 
   subPowerToolList(this.tooltype, this.modelname, this.warning, this.usage,
-      this.related, this.resources);
+      this.related, this.risk, this.resources);
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +46,6 @@ class subPowerToolList extends StatelessWidget {
               ),
             ],
           ),
-          // SizedBox(
-          //   height: MediaQuery.of(context).size.height * 0.02,
-          // ),
           Row(
             children: [
               SizedBox(
@@ -86,14 +84,6 @@ class subPowerToolList extends StatelessWidget {
             ),
           ),
           backgroundColor: const Color.fromARGB(255, 2, 21, 104),
-          // title: Text(
-          //   tooltype,
-          //   style: const TextStyle(
-          //     color: Colors.white,
-          //     fontFamily: "KoreanFont",
-          //     fontSize: 30,
-          //   ),
-          // ),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -101,28 +91,6 @@ class subPowerToolList extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
-              // Row(
-              //   children: [
-              //     SizedBox(
-              //       width: MediaQuery.of(context).size.width * 0.14,
-              //     ),
-              //     Text(
-              //       tooltype,
-              //       style: const TextStyle(
-              //         color: Colors.black,
-              //         fontFamily: "KoreanFont",
-              //         fontSize: 30,
-              //       ),
-              //     ),
-              //     const Spacer(),
-              //     SizedBox(
-              //       width: MediaQuery.of(context).size.width * 0.14,
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.height * 0.025,
-              // ),
               Row(
                 children: [
                   SizedBox(
@@ -131,7 +99,19 @@ class subPowerToolList extends StatelessWidget {
                   Image.asset(
                       height: MediaQuery.of(context).size.height * 0.4,
                       imageSelect(tooltype)),
-                  Spacer(),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.14,
+                  ),
+                  Flexible(
+                    child: Text(
+                      "Risk: " + risk,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 255, 101, 101),
+                        fontFamily: "KoreanFont",
+                        fontSize: 30,
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.14,
                   ),

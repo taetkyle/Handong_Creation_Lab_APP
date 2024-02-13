@@ -11,6 +11,8 @@ class Tools {
   final String eng_warning;
   final String kor_related_tool;
   final String eng_related_tool;
+  final String kor_risk;
+  final String eng_risk;
   final String resources;
 
   Tools(
@@ -24,6 +26,8 @@ class Tools {
       required this.eng_warning,
       required this.kor_related_tool,
       required this.eng_related_tool,
+      required this.kor_risk,
+      required this.eng_risk,
       required this.resources});
 
   factory Tools.fromFirestore(DocumentSnapshot doc) {
@@ -40,6 +44,8 @@ class Tools {
       eng_warning: data["eng_warning"],
       kor_related_tool: data["kor_related_tool"],
       eng_related_tool: data["eng_related_tool"],
+      kor_risk: data["kor_risk"],
+      eng_risk: data["eng_risk"],
       resources: data["resources"],
     );
   }
@@ -55,6 +61,8 @@ class Tools {
       "eng_warning": eng_warning,
       "kor_related_tool": kor_related_tool,
       "eng_related_tool": eng_related_tool,
+      "kor_risk": kor_risk,
+      "eng_risk": eng_risk,
       "resources": resources,
     };
   }

@@ -23,6 +23,8 @@ class _toolAddingState extends State<toolAdding> {
   TextEditingController eng_warning_controller = TextEditingController();
   TextEditingController kor_related_tool_controller = TextEditingController();
   TextEditingController eng_related_tool_controller = TextEditingController();
+  TextEditingController kor_risk_controller = TextEditingController();
+  TextEditingController eng_risk_controller = TextEditingController();
   TextEditingController resources_controller = TextEditingController();
   Color buttonColor = const Color.fromARGB(255, 2, 21, 104);
   Color textColor = const Color.fromARGB(255, 2, 21, 104);
@@ -160,6 +162,30 @@ class _toolAddingState extends State<toolAdding> {
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: TextField(
+                // keyboardType: TextInputType.multiline,
+                // maxLines: null,
+                controller: kor_risk_controller,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: '장비 위험도',
+                    hintText: '장비의 위험도를 상 중 하 중에 정해 적어주세요'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: TextField(
+                // keyboardType: TextInputType.multiline,
+                // maxLines: null,
+                controller: eng_risk_controller,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: '영문 장비 위험도',
+                    hintText: '장비의 위험도를 High Middle Low 중에 정해 적어주세요'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: TextField(
                 controller: resources_controller,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -222,14 +248,10 @@ class _toolAddingState extends State<toolAdding> {
                     onTap: () {
                       if (kor_tool_type_controller.text.isEmpty ||
                           eng_tool_type_controller.text.isEmpty ||
-                          model_name_controller.text.isEmpty ||
                           kor_usage_controller.text.isEmpty ||
                           eng_usage_controller.text.isEmpty ||
-                          kor_warning_controller.text.isEmpty ||
-                          eng_warning_controller.text.isEmpty ||
-                          kor_related_tool_controller.text.isEmpty ||
-                          eng_related_tool_controller.text.isEmpty ||
-                          resources_controller.text.isEmpty) {
+                          kor_risk_controller.text.isEmpty ||
+                          eng_risk_controller.text.isEmpty) {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
@@ -254,6 +276,8 @@ class _toolAddingState extends State<toolAdding> {
                           eng_warning_controller.text,
                           kor_related_tool_controller.text,
                           eng_related_tool_controller.text,
+                          kor_risk_controller.text,
+                          eng_risk_controller.text,
                           resources_controller.text);
                       Get.offAll(() => masterpage());
                     },

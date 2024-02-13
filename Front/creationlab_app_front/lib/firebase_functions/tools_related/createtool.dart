@@ -10,6 +10,8 @@ void createData(
     String eng_warning,
     String kor_related_tool,
     String eng_related_tool,
+    String kor_risk,
+    String eng_risk,
     String resources) {
   final usercol = FirebaseFirestore.instance.collection("tools").doc();
   usercol.set(
@@ -23,6 +25,8 @@ void createData(
       "eng_warning": eng_warning,
       "kor_related_tool": kor_related_tool,
       "eng_related_tool": eng_related_tool,
+      "kor_risk": kor_risk,
+      "eng_risk": eng_risk,
       "resources": resources,
     },
   );
