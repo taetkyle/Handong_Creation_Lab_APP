@@ -6,6 +6,7 @@ import 'itemlist/itemlist.dart';
 import 'package:get/get.dart';
 import 'app_manage/administer_varify.dart';
 import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
+import 'dart:js' as js;
 
 class Homepage extends StatelessWidget {
   // const Homepage({super.key});
@@ -81,7 +82,7 @@ class Homepage extends StatelessWidget {
                               color: buttonColor),
                           child: Center(
                             child: Text(
-                              ["유의 사항", "notification"][lang],
+                              ["장비 대출", "Tool Borrow"][lang],
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontFamily: "KoreanFont",
@@ -90,10 +91,8 @@ class Homepage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () async {
-                          await AdmincallFireStore();
-                          // createData();
-                          // Get.to(() => const notification());
+                        onTap: () {
+                          Get.to(() => const tool_borrow());
                         },
                       ),
                     ),
@@ -117,10 +116,10 @@ class Homepage extends StatelessWidget {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               color: buttonColor),
-                          child: Center(
+                          child: const Center(
                             child: Text(
-                              ["장비 대출", "Tool Borrow"][lang],
-                              style: const TextStyle(
+                              "HIS Connection",
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: "KoreanFont",
                                 fontSize: 20,
@@ -128,8 +127,10 @@ class Homepage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () {
-                          Get.to(() => const tool_borrow());
+                        onTap: () async {
+                          Get.to(js.context.callMethod('open', [
+                            "https://his.sc.kr/category/news-and-media/news/"
+                          ]));
                         },
                       ),
                     ),

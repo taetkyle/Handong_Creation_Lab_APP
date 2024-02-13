@@ -39,15 +39,36 @@ class _administer_varifyState extends State<administer_varify> {
       showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: Text(['알림', 'Notice'][lang]),
-          content: Text([
-            '해당 기능에 접근하시려면 운영자 아이디로 로그인 해주세요',
-            'Please login with admin account to access'
-          ][lang]),
+          title: Text(
+            ['알림', 'Notice'][lang],
+            style: const TextStyle(
+              color: Colors.black,
+              fontFamily: "KoreanFont",
+              fontSize: 20,
+            ),
+          ),
+          content: Text(
+            [
+              '해당 기능에 접근하시려면 운영자 아이디로 로그인 해주세요',
+              'Please login with admin account to access'
+            ][lang],
+            style: const TextStyle(
+              color: Colors.black,
+              fontFamily: "KoreanFont",
+              fontSize: 20,
+            ),
+          ),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text('OK'),
+              child: const Text(
+                'OK',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "KoreanFont",
+                  fontSize: 20,
+                ),
+              ),
             ),
           ],
         ),

@@ -167,32 +167,95 @@ class masterpage extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: Container(
-          height: 60,
-          color: Colors.black12,
-          child: InkWell(
-            onTap: () {
-              Get.offAll(Homepage());
-            },
-            child: const Padding(
-              padding: EdgeInsets.only(top: 8.0),
-              child: Column(
-                children: <Widget>[
-                  Icon(
-                    Icons.cancel,
-                  ),
-                  Text(
-                    '나가기',
-                    style: TextStyle(
-                      // color: Color.fromARGB(255, 90, 90, 90),
-                      fontFamily: "KoreanFont",
-                      fontSize: 20,
+            height: 60,
+            color: Colors.black12,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    onTap: () {
+                      Get.offAll(Homepage());
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.cancel,
+                          ),
+                          Text(
+                            '나가기',
+                            style: TextStyle(
+                              // color: Color.fromARGB(255, 90, 90, 90),
+                              fontFamily: "KoreanFont",
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: InkWell(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          barrierDismissible: false, // 바깥 영역 터치시 닫을지 여부
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              content: const Text(
+                                "물품 추가 페이지안에있는 물품 추가 페이지와 장비 추가 버튼으로 이어지는 장비 추가 버튼은 다릅니다.\n 물품 추가는 번호가 매겨진 다소 작은 장비들이고, 장비 추가는 비교적 큰 드릴같은 장비들입니다.\n화이팅!!",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "KoreanFont",
+                                  fontSize: 20,
+                                ),
+                              ),
+                              insetPadding:
+                                  const EdgeInsets.fromLTRB(0, 80, 0, 80),
+                              actions: [
+                                TextButton(
+                                  child: const Text(
+                                    '확인',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: "KoreanFont",
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          });
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
+                      child: Column(
+                        children: <Widget>[
+                          Icon(
+                            Icons.help,
+                          ),
+                          Text(
+                            '도움말',
+                            style: TextStyle(
+                              // color: Color.fromARGB(255, 90, 90, 90),
+                              fontFamily: "KoreanFont",
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )),
       ),
     );
   }
