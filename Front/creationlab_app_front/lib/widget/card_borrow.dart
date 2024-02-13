@@ -53,23 +53,14 @@ Widget cardborrow(String username, String toolname, String date, context) {
           ),
           Expanded(
               flex: 3,
-              child: (MediaQuery.of(context).size.width > 600)
-                  ? Text(
-                      date,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontFamily: "KoreanFont",
-                        fontSize: 20,
-                      ),
-                    )
-                  : Text(
-                      date[2] + date[3] + date[4] + date[5] + date[6],
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontFamily: "KoreanFont",
-                        fontSize: 20,
-                      ),
-                    )),
+              child: Text(
+                date,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontFamily: "KoreanFont",
+                  fontSize: 20,
+                ),
+              )),
           Expanded(
             flex: contextSpace,
             child: const SizedBox(),
