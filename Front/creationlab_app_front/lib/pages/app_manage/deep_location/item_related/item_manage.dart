@@ -1,6 +1,7 @@
 import 'package:creationlab_app_front/pages/app_manage/deep_location/item_related/item_adding.dart';
-// import 'package:creationlab_app_front/pages/itemlist/powertoollist.dart';
-// import 'package:creationlab_app_front/pages/itemlist/type_sep.dart';
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
+import 'package:provider/provider.dart';
+// LangProvider
 import 'package:creationlab_app_front/widget/master_card.dart';
 import 'package:flutter/material.dart';
 import 'package:creationlab_app_front/firebase_functions/item_related/items.dart';
@@ -33,12 +34,14 @@ class _itemManageState extends State<itemManage> {
 
   @override
   Widget build(BuildContext context) {
+    int lang = Provider.of<LangProvider>(context, listen: false).language;
+
     return Scaffold(
       appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 21, 104),
-          title: const Text(
-            "물품 관리",
-            style: TextStyle(
+          title: Text(
+            ["물품 관리", "Item Manage"][lang],
+            style: const TextStyle(
               color: Colors.white,
               fontFamily: "KoreanFont",
               fontSize: 30,
@@ -51,20 +54,35 @@ class _itemManageState extends State<itemManage> {
             return ListView.builder(
                 itemCount: itemsList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      masterCarditem(
-                          itemsList[index].docId,
-                          itemsList[index].korname,
-                          itemsList[index].number.toString(),
-                          itemsList[index].detail_info,
-                          itemsList[index].resources,
-                          itemsList[index].kortype),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  );
+                  return (lang == 0)
+                      ? Column(
+                          children: [
+                            masterCarditem(
+                                itemsList[index].docId,
+                                itemsList[index].korname,
+                                itemsList[index].number.toString(),
+                                itemsList[index].detail_info,
+                                itemsList[index].resources,
+                                itemsList[index].kortype),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            masterCarditem(
+                                itemsList[index].docId,
+                                itemsList[index].engname,
+                                itemsList[index].number.toString(),
+                                itemsList[index].eng_detailed_info,
+                                itemsList[index].resources,
+                                itemsList[index].engtype),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        );
                 });
           } else {
             return const CircularProgressIndicator();

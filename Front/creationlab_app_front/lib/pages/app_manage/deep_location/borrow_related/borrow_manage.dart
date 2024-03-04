@@ -1,7 +1,9 @@
+import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list_call.dart';
 import 'package:creationlab_app_front/widget/master_card_borrow.dart';
-
+import 'package:provider/provider.dart';
+// LangProvider
 import 'package:get/get.dart';
 import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list.dart';
 
@@ -31,12 +33,14 @@ class _borrowManageState extends State<borrowManage> {
 
   @override
   Widget build(BuildContext context) {
+    int lang = Provider.of<LangProvider>(context, listen: false).language;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 2, 21, 104),
-        title: const Text(
-          "대출 관리",
-          style: TextStyle(
+        title: Text(
+          ["대출 관리", "Borrow Manage"][lang],
+          style: const TextStyle(
             color: Colors.white,
             fontFamily: "KoreanFont",
             fontSize: 30,

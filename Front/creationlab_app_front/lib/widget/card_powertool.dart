@@ -44,7 +44,7 @@ Widget carditem(String tooltype, String modelname, String warning, String usage,
                         style: TextStyle(
                           color: Colors.black,
                           fontFamily: "KoreanFont",
-                          fontSize: 15,
+                          fontSize: 20,
                         ),
                       )),
                   const Expanded(
@@ -60,7 +60,7 @@ Widget carditem(String tooltype, String modelname, String warning, String usage,
                         style: const TextStyle(
                           color: Colors.black,
                           fontFamily: "KoreanFont",
-                          fontSize: 15,
+                          fontSize: 20,
                         ),
                       )),
                   const Expanded(
