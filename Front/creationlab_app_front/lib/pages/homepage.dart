@@ -303,7 +303,7 @@ class _HomepageState extends State<Homepage> {
                       flex: 10,
                       child: Center(
                         child: Text("CreationLab\nApp",
-                            style: (MediaQuery.of(context).size.width > 350)
+                            style: (MediaQuery.of(context).size.width > 430)
                                 ? const TextStyle(
                                     color: Color.fromARGB(255, 90, 90, 90),
                                     fontFamily: "KoreanFont",
@@ -312,7 +312,7 @@ class _HomepageState extends State<Homepage> {
                                 : const TextStyle(
                                     color: Color.fromARGB(255, 90, 90, 90),
                                     fontFamily: "KoreanFont",
-                                    fontSize: 50,
+                                    fontSize: 35,
                                   )),
                       )),
                   const Expanded(flex: 3, child: SizedBox()),
@@ -450,8 +450,7 @@ class _HomepageState extends State<Homepage> {
                                 ),
                               ),
                               onTap: () {
-                                // Get.to(() => administer_varify());
-                                print(MediaQuery.of(context).size.width);
+                                Get.to(() => administer_varify());
                               },
                             ),
                           ),
