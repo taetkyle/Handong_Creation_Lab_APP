@@ -82,7 +82,7 @@ class _HomepageState extends State<Homepage> {
                               ),
                               onTap: () {
                                 Get.to(() => const itemList());
-                                // print(MediaQuery.of(context).size.width);
+                                print(MediaQuery.of(context).size.width);
                               },
                             ),
                           ),
@@ -299,17 +299,21 @@ class _HomepageState extends State<Homepage> {
               backgroundColor: Colors.transparent,
               body: Column(
                 children: [
-                  const Expanded(
+                  Expanded(
                       flex: 10,
                       child: Center(
-                        child: Text(
-                          "CreationLab\nApp",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 90, 90, 90),
-                            fontFamily: "KoreanFont",
-                            fontSize: 60,
-                          ),
-                        ),
+                        child: Text("CreationLab\nApp",
+                            style: (MediaQuery.of(context).size.width > 350)
+                                ? const TextStyle(
+                                    color: Color.fromARGB(255, 90, 90, 90),
+                                    fontFamily: "KoreanFont",
+                                    fontSize: 60,
+                                  )
+                                : const TextStyle(
+                                    color: Color.fromARGB(255, 90, 90, 90),
+                                    fontFamily: "KoreanFont",
+                                    fontSize: 50,
+                                  )),
                       )),
                   const Expanded(flex: 3, child: SizedBox()),
                   Expanded(
@@ -446,7 +450,8 @@ class _HomepageState extends State<Homepage> {
                                 ),
                               ),
                               onTap: () {
-                                Get.to(() => administer_varify());
+                                // Get.to(() => administer_varify());
+                                print(MediaQuery.of(context).size.width);
                               },
                             ),
                           ),
