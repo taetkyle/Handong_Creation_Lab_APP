@@ -309,10 +309,13 @@ class _HomepageState extends State<Homepage> {
                                     fontFamily: "KoreanFont",
                                     fontSize: 60,
                                   )
-                                : const TextStyle(
-                                    color: Color.fromARGB(255, 90, 90, 90),
+                                : TextStyle(
+                                    color:
+                                        const Color.fromARGB(255, 90, 90, 90),
                                     fontFamily: "KoreanFont",
-                                    fontSize: 35,
+                                    fontSize: 55 /
+                                        430 *
+                                        (MediaQuery.of(context).size.width),
                                   )),
                       )),
                   const Expanded(flex: 3, child: SizedBox()),
