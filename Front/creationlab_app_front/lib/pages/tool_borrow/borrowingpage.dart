@@ -126,11 +126,50 @@ class _borrowingpageState extends State<borrowingpage> {
                     ),
                   ),
                   onTap: () {
-                    createBorrowList(
-                        usernameEditingController.text,
-                        toolnameEditingController.text,
-                        DateFormat('yyyy/MM/dd').format(DateTime.now()));
-                    Get.offAll(() => Homepage());
+                    if (usernameEditingController.text.isNotEmpty &&
+                        toolnameEditingController.text.isNotEmpty) {
+                      createBorrowList(
+                          usernameEditingController.text,
+                          toolnameEditingController.text,
+                          DateFormat('yyyy/MM/dd').format(DateTime.now()));
+                      Get.offAll(() => Homepage());
+                    } else {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: Text(
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontFamily: "KoreanFont",
+                              fontSize: 20,
+                            ),
+                            ['오류', "Error"][lang],
+                          ),
+                          content: Text(
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontFamily: "KoreanFont",
+                                fontSize: 20,
+                              ),
+                              [
+                                '입력정보를 확인해 주세요',
+                                'Please check typed values'
+                              ][lang]),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () => Navigator.pop(context, 'OK'),
+                              child: Text(
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontFamily: "KoreanFont",
+                                    fontSize: 20,
+                                  ),
+                                  ['확인', "OK"][lang]),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   },
                 ),
               ),

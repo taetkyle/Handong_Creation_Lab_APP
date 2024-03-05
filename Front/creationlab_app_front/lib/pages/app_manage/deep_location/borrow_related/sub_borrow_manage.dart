@@ -54,7 +54,7 @@ class subBorrowManage extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     deleteDoc(docId);
-                    Get.offAll(const borrowManage());
+                    Get.offAll(borrowManage());
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),

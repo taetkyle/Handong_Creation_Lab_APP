@@ -1,3 +1,4 @@
+import 'package:creationlab_app_front/pages/app_manage/masterpage.dart';
 import 'package:creationlab_app_front/provider/eng_kor_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:creationlab_app_front/firebase_functions/borrow_related/borrow_list_call.dart';
@@ -37,6 +38,16 @@ class _borrowManageState extends State<borrowManage> {
 
     return Scaffold(
       appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Get.to(const masterpage());
+              },
+            );
+          },
+        ),
         backgroundColor: const Color.fromARGB(255, 2, 21, 104),
         title: Text(
           ["대출 관리", "Borrow Manage"][lang],
