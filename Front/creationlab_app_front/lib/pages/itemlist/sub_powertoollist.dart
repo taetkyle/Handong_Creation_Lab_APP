@@ -166,8 +166,8 @@ class _subPowerToolListState extends State<subPowerToolList> {
                 color: const Color.fromARGB(255, 2, 21, 104),
                 child: InkWell(
                   onTap: () {
-                    // js.context.callMethod('open', [widget.resources]);
-                    print(MediaQuery.of(context).size.width);
+                    js.context.callMethod('open', [widget.resources]);
+                    // print(MediaQuery.of(context).size.width);
                   },
                   child: const Padding(
                     padding: EdgeInsets.only(top: 8.0),
